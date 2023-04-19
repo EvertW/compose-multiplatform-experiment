@@ -22,7 +22,8 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
@@ -35,6 +36,11 @@ kotlin {
                 implementation(compose.ui)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                api(compose.foundation)
+                api(compose.animation)
+                api("moe.tlaster:precompose:1.4.0")
+                api("moe.tlaster:precompose-viewmodel:1.4.0") // ViewModel intergration
             }
         }
         val androidMain by getting {

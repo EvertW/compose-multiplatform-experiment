@@ -3,11 +3,10 @@
 package ui.theme
 
 import androidx.compose.foundation.LocalIndication
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -46,10 +45,10 @@ fun MyTheme(
         LocalIndication provides rememberRipple(),
         LocalRippleTheme provides MyRipple,
         content = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MyTheme.colors.background)
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MyTheme.colors.background,
+                contentColor = MyTheme.colors.primary,
             ) {
                 content.invoke()
             }
