@@ -1,4 +1,4 @@
-rootProject.name = "My application"
+rootProject.name = "MultiCompose"
 
 include(":androidApp")
 include(":shared")
@@ -6,7 +6,6 @@ include(":shared")
 pluginManagement {
     repositories {
         gradlePluginPortal()
-//        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
     }
 
@@ -30,6 +29,5 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-//        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
