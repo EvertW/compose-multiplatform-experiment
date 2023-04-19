@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import moe.tlaster.precompose.viewmodel.viewModel
 import ui.library.text.MyText
 import ui.theme.MyTheme
 
@@ -18,7 +17,6 @@ import ui.theme.MyTheme
 fun SettingsScreen(
     modifier: Modifier = Modifier,
 ) {
-    val viewModel = viewModel { SettingsViewModel() }
     val scrollState = rememberScrollState()
 
     Column(

@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import moe.tlaster.precompose.viewmodel.viewModel
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
 import ui.library.text.MyText
@@ -20,7 +19,6 @@ import ui.theme.MyTheme
 fun HomeScreen(
     modifier: Modifier = Modifier,
 ) {
-    val viewModel = viewModel { HomeViewModel() }
     val scrollState = rememberScrollState()
 
     Column(

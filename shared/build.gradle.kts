@@ -7,7 +7,6 @@ plugins {
 
 kotlin {
     android()
-
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -29,18 +28,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.animation)
-                implementation(compose.ui)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
-
-                api(compose.foundation)
-                api(compose.animation)
                 api("moe.tlaster:precompose:1.4.0")
-                api("moe.tlaster:precompose-viewmodel:1.4.0") // ViewModel intergration
+                api(compose.runtime)
+                api(compose.foundation)
+                api(compose.material3)
+                api(compose.animation)
+                api(compose.ui)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                api(compose.components.resources)
             }
         }
         val androidMain by getting {
