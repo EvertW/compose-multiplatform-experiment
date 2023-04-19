@@ -14,35 +14,28 @@ class MyTypography internal constructor(
     val button: TextStyle,
 )
 
-internal fun MyTypography(
-    colors: MyColors
-) = MyTypography(
+internal fun MyTypography() = MyTypography(
     title = TextStyle(
-        color = colors.text,
-        fontWeight = FontWeight.ExtraBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
         lineHeight = 28.sp,
     ),
     subTitle = TextStyle(
-        color = colors.text,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
         lineHeight = 24.sp,
     ),
     body = TextStyle(
-        color = colors.text,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         lineHeight = 18.sp,
     ),
     label = TextStyle(
-        color = colors.text,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 14.sp,
     ),
     button = TextStyle(
-        color = colors.text,
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
         lineHeight = 18.sp,

@@ -8,17 +8,17 @@ class MyColors internal constructor(
     val transparent: Color = Color(0x00000000),
     val background: Color,
     val text: Color,
+    val textInverse: Color,
     val surface: Color,
     val divider: Color,
     val primary: Color,
-    val secondary: Color,
 )
 
 internal fun MyColors() = MyColors(
     background = Color(0xFFFFFFFF),
-    text = Color(0xFF014751),
-    surface = Color(0xFFF8FBFF),
-    divider = Color(0x14014751),
-    primary = Color(0xFFAFF8C8),
-    secondary = Color(0xFFFFEEB4),
+    text = Color(0xFF1B1C20),
+    textInverse = Color(0xFFFCFCFC),
+    surface = Color(0xFFFCFCFC),
+    divider = Color(0xFFF1F1F1),
+    primary = Color(0xFF2242DA),
 )

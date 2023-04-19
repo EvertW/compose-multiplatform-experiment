@@ -8,57 +8,58 @@ import ui.resources.font
 
 internal object MyFonts {
     private const val SPACE_MONO = "Space Mono"
-    private const val SPACE_GROTESK = "Space Grotesk"
+    private const val SORA = "Space Grotesk"
     private const val DM_SANS = "DM Sans"
 
-    val SpaceGrotesk
+    val Sora
         @Composable
         get() = FontFamily(
             font(
-                name = SPACE_GROTESK,
-                res = "spacegrotesk_bold",
+                name = SORA,
+                res = "sora_extrabold",
+                weight = FontWeight.ExtraBold,
+                style = FontStyle.Normal
+            ),
+            font(
+                name = SORA,
+                res = "sora_bold",
                 weight = FontWeight.Bold,
                 style = FontStyle.Normal
             ),
             font(
-                name = SPACE_GROTESK,
-                res = "spacegrotesk_medium",
+                name = SORA,
+                res = "sora_medium",
                 weight = FontWeight.Medium,
                 style = FontStyle.Normal
             ),
             font(
-                name = SPACE_GROTESK,
-                res = "spacegrotesk_semibold",
+                name = SORA,
+                res = "sora_semibold",
                 weight = FontWeight.SemiBold,
                 style = FontStyle.Normal
             ),
             font(
-                name = SPACE_GROTESK,
-                res = "spacegrotesk_regular",
+                name = SORA,
+                res = "sora_regular",
                 weight = FontWeight.Normal,
                 style = FontStyle.Normal
             ),
             font(
-                name = SPACE_GROTESK,
-                res = "spacegrotesk_light",
+                name = SORA,
+                res = "sora_light",
                 weight = FontWeight.Light,
                 style = FontStyle.Normal
             ),
-        )
-
-    val SpaceMono
-        @Composable
-        get() = FontFamily(
             font(
-                name = SPACE_MONO,
-                res = "spacemono_bold",
-                weight = FontWeight.Bold,
+                name = SORA,
+                res = "sora_extralight",
+                weight = FontWeight.ExtraLight,
                 style = FontStyle.Normal
             ),
             font(
-                name = SPACE_MONO,
-                res = "spacemono_regular",
-                weight = FontWeight.Normal,
+                name = SORA,
+                res = "sora_thin",
+                weight = FontWeight.Thin,
                 style = FontStyle.Normal
             ),
         )
