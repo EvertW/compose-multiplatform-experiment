@@ -1,4 +1,4 @@
-package ui.screens.home
+package ui.screens.detail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,10 +16,10 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
 import ui.library.text.MyText
-import ui.screens.detail.DetailScreen
 import ui.theme.MyTheme
 
-object HomeScreen : Screen {
+class DetailScreen : Screen {
+
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
@@ -30,17 +30,8 @@ object HomeScreen : Screen {
                 .padding(MyTheme.dimensions.contentPadding),
         ) {
             MyText(
-                text = "Title", style = MyTheme.typography.title
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            MyText(
-                text = "Subtitle", style = MyTheme.typography.subTitle
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            MyText(
-                text = "12-12-2023",
-                style = MyTheme.typography.label,
-                color = MyTheme.colors.primary
+                text = "Detail page",
+                style = MyTheme.typography.title
             )
             Spacer(modifier = Modifier.height(8.dp))
             MyText(
@@ -48,14 +39,10 @@ object HomeScreen : Screen {
             )
             Spacer(modifier = Modifier.height(12.dp))
             MyButton(
-                text = "Primary Button"
+                text = "Go back", style = MyButtonStyle.Secondary
             ) {
-                navigator.push(DetailScreen())
+                navigator.pop()
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            MyButton(
-                text = "Secondary Button", style = MyButtonStyle.Secondary
-            ) {}
         }
     }
 }

@@ -28,8 +28,9 @@ fun App() {
                 contentColor = MyTheme.colors.primary,
                 content = { CurrentScreen() },
                 bottomBar = {
-                    if (navigator.lastItem is HomeScreen || navigator.lastItem is SettingsScreen) {
-                        MyBottomMenu(modifier = Modifier.fillMaxWidth()) {
+                    when (navigator.lastItem) {
+                        is HomeScreen,
+                        is SettingsScreen -> MyBottomMenu(modifier = Modifier.fillMaxWidth()) {
                             MyBottomMenuItem(
                                 icon = Icons.Outlined.Home,
                                 contentDescription = "Home"
