@@ -14,9 +14,9 @@ class MyColors internal constructor(
 )
 
 internal fun MyColors() = MyColors(
-    background = Color(0xFFFFFFFF),
-    text = Color(0xFF1B1C20),
-    textInverse = Color(0xFFFCFCFC),
-    surface = Color(0xFFf6f7fd),
-    primary = Color(0xFF2242DA),
+    background = Color(0xFF000000),
+    text = Color(0xFFFFFFFF),
+    textInverse = Color(0xFF000000),
+    surface = Color(0xFF171717),
+    primary = Color(0xFFFFD13F),
 )

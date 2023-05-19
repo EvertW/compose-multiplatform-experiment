@@ -4,8 +4,10 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,6 +25,7 @@ fun MyButton(
     onClick: () -> Unit
 ) {
     val shape = remember { CircleShape }
+    val interactionSource = remember { MutableInteractionSource() }
     MyText(
         modifier = modifier
             .animateContentSize()
@@ -36,18 +39,26 @@ fun MyButton(
             .conditional(condition = style == MyButtonStyle.Secondary) {
                 border(
                     width = 2.dp,
-                    color = MyTheme.colors.primary,
+                    color = MyTheme.colors.text,
                     shape = shape
                 )
             }
-            .clickable {
+            .clickable(
+                interactionSource = interactionSource,
+                indication = rememberRipple(
+                    color = when (style) {
+                        MyButtonStyle.Primary -> MyTheme.colors.textInverse
+                        MyButtonStyle.Secondary -> MyTheme.colors.text
+                    },
+                )
+            ) {
                 onClick.invoke()
             }
             .padding(horizontal = 16.dp, vertical = 12.dp),
         text = text,
         color = when (style) {
             MyButtonStyle.Primary -> MyTheme.colors.textInverse
-            MyButtonStyle.Secondary -> MyTheme.colors.primary
+            MyButtonStyle.Secondary -> MyTheme.colors.text
         },
         style = MyTheme.typography.button
     )
