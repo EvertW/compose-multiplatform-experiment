@@ -33,6 +33,7 @@ kotlin {
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+                api("br.com.devsrsouza.compose.icons:feather:1.1.0")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material3)

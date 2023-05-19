@@ -1,21 +1,30 @@
 package ui.screens.detail
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import ui.library.buttons.MyButton
-import ui.library.buttons.MyButtonStyle
+import compose.icons.FeatherIcons
+import compose.icons.feathericons.ArrowRight
 import ui.library.text.MyText
+import ui.library.topbar.MyTopBar
 import ui.theme.MyTheme
 
 class DetailScreen : Screen {
@@ -25,23 +34,53 @@ class DetailScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(MyTheme.dimensions.contentPadding),
+            modifier = Modifier.fillMaxSize(),
         ) {
-            MyText(
-                text = "Detail page",
-                style = MyTheme.typography.title
+            MyTopBar(
+                content = {
+                    MyText(
+                        text = "Detail page",
+                        style = MyTheme.typography.title
+                    )
+                },
+                onBack = {
+                    navigator.pop()
+                }
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            MyText(
-                text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            MyButton(
-                text = "Go back", style = MyButtonStyle.Secondary
+            Column(
+                modifier = Modifier.weight(1F)
+                    .verticalScroll(scrollState)
+                    .padding(MyTheme.dimensions.contentPadding),
             ) {
-                navigator.pop()
+                MyText(
+                    text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(5) {
+                        Row(
+                            modifier = Modifier
+                                .background(color = MyTheme.colors.surface)
+                                .padding(24.dp)
+                                .clickable {
+
+                                },
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            MyText(
+                                text = "Detail tile"
+                            )
+                            Icon(
+                                modifier = Modifier.size(16.dp),
+                                imageVector = FeatherIcons.ArrowRight,
+                                contentDescription = null,
+                            )
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,14 +1,14 @@
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
+import compose.icons.FeatherIcons
+import compose.icons.feathericons.Home
+import compose.icons.feathericons.Settings
 import ui.library.menu.MyBottomMenu
 import ui.library.menu.MyBottomMenuItem
 import ui.screens.home.HomeScreen
@@ -32,13 +32,13 @@ fun App() {
                         is HomeScreen,
                         is SettingsScreen -> MyBottomMenu(modifier = Modifier.fillMaxWidth()) {
                             MyBottomMenuItem(
-                                icon = Icons.Outlined.Home,
+                                icon = FeatherIcons.Home,
                                 contentDescription = "Home"
                             ) {
                                 navigator.replace(HomeScreen)
                             }
                             MyBottomMenuItem(
-                                icon = Icons.Outlined.Settings,
+                                icon = FeatherIcons.Settings,
                                 contentDescription = "Settings"
                             ) {
                                 navigator.replace(SettingsScreen)
@@ -51,4 +51,5 @@ fun App() {
     }
 }
 
-expect fun getPlatformName(): String
+expect fun getPlatformName() : String
+fun getAppVersion() = "1.0"
