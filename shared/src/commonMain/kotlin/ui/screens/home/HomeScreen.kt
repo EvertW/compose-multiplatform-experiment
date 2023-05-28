@@ -1,13 +1,18 @@
 package ui.screens.home
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
@@ -27,40 +32,51 @@ object HomeScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(MyTheme.dimensions.contentPadding),
+            modifier = Modifier.fillMaxSize().verticalScroll(scrollState),
         ) {
-            MyText(
-                text = "Jetpack Compose", style = MyTheme.typography.title
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            MyText(
-                text = "Multiplatform Experiment", style = MyTheme.typography.subTitle
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            MyText(
-                text = "17-05-2023",
-                style = MyTheme.typography.label,
-                color = MyTheme.colors.primary
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            MyText(
-                text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            MyButton(
-                text = "Open detail",
+            Box(
+                modifier = Modifier
+                    .height(256.dp)
+                    .fillMaxWidth()
+                    .background(MyTheme.colors.primary)
+                    .padding(MyTheme.dimensions.contentPadding),
+                contentAlignment = Alignment.Center
             ) {
-                navigator.push(DetailScreen())
+                MyText(
+                    text = "Jetpack Compose",
+                    style = MyTheme.typography.title,
+                    color = MyTheme.colors.textInverse
+                )
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            MyButton(
-                text = "More info",
-                icon = FeatherIcons.ExternalLink,
-                style = MyButtonStyle.Secondary
-            ) {
+            Spacer(modifier = Modifier.height(4.dp))
+            Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
+                MyText(
+                    text = "Multiplatform Experiment", style = MyTheme.typography.subTitle
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                MyText(
+                    text = "17-05-2023",
+                    style = MyTheme.typography.label,
+                    color = MyTheme.colors.primary
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                MyText(
+                    text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                MyButton(
+                    text = "Open detail",
+                ) {
+                    navigator.push(DetailScreen())
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                MyButton(
+                    text = "More info",
+                    icon = FeatherIcons.ExternalLink,
+                    style = MyButtonStyle.Secondary
+                ) {
 
+                }
             }
         }
     }

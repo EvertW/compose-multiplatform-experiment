@@ -2,9 +2,11 @@ package ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -12,6 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import com.moriatsushi.insetsx.navigationBars
+import com.moriatsushi.insetsx.statusBars
+import com.moriatsushi.insetsx.systemBars
 import getAppVersion
 import ui.library.text.MyText
 import ui.theme.MyTheme
@@ -24,7 +29,9 @@ object SettingsScreen : Screen {
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(scrollState)
-                .padding(MyTheme.dimensions.contentPadding),
+                .padding(MyTheme.dimensions.contentPadding)
+                .windowInsetsPadding(WindowInsets.statusBars)
+            ,
         ) {
             MyText(
                 text = "Settings",

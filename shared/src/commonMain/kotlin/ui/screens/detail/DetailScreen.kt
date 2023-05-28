@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -21,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.moriatsushi.insetsx.navigationBars
+import com.moriatsushi.insetsx.statusBars
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.ArrowRight
 import ui.library.text.MyText
@@ -34,7 +38,7 @@ class DetailScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.statusBars),
         ) {
             MyTopBar(
                 content = {
@@ -50,7 +54,8 @@ class DetailScreen : Screen {
             Column(
                 modifier = Modifier.weight(1F)
                     .verticalScroll(scrollState)
-                    .padding(MyTheme.dimensions.contentPadding),
+                    .padding(MyTheme.dimensions.contentPadding)
+                    .windowInsetsPadding(WindowInsets.navigationBars),
             ) {
                 MyText(
                     text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."

@@ -35,6 +35,7 @@ kotlin {
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
                 api("br.com.devsrsouza.compose.icons:feather:1.1.0")
+                api("com.moriatsushi.insetsx:insetsx:0.1.0-alpha06")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
