@@ -7,7 +7,6 @@ import androidx.compose.ui.text.font.FontWeight
 import ui.resources.font
 
 internal object MyFonts {
-    private const val SPACE_MONO = "Space Mono"
     private const val SORA = "Space Grotesk"
     private const val DM_SANS = "DM Sans"
 

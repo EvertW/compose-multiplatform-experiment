@@ -18,5 +18,5 @@ internal fun MyColors() = MyColors(
     text = Color(0xFFFFFFFF),
     textInverse = Color(0xFF000000),
     surface = Color(0xFF171717),
-    primary = Color(0xFFFFD13F),
+    primary = Color(0xFFFBE75D),
 )

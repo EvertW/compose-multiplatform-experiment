@@ -57,7 +57,6 @@ fun CalendarEventItem(
         MyText(
             text = event.speaker,
             style = MyTheme.typography.label,
-            color = MyTheme.colors.primary
         )
     }
 }

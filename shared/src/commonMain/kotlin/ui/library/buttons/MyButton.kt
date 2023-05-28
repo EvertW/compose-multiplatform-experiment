@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import ui.library.text.MyText
@@ -31,7 +32,7 @@ fun MyButton(
     style: MyButtonStyle = MyButtonStyle.Primary,
     onClick: () -> Unit
 ) {
-    val shape = remember { CircleShape }
+    val shape = remember { RectangleShape }
     val interactionSource = remember { MutableInteractionSource() }
 
     Row(
