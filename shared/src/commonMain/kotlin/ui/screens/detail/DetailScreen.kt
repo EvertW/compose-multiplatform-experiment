@@ -63,10 +63,8 @@ class DetailScreen : Screen {
                         Row(
                             modifier = Modifier
                                 .background(color = MyTheme.colors.surface)
-                                .padding(24.dp)
-                                .clickable {
-
-                                },
+                                .clickable {}
+                                .padding(24.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {

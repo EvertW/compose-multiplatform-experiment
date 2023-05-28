@@ -78,7 +78,10 @@ fun MyButton(
             Icon(
                 modifier = modifier.size(16.dp),
                 imageVector = it,
-                tint = MyTheme.colors.text,
+                tint = when (style) {
+                    MyButtonStyle.Primary -> MyTheme.colors.textInverse
+                    MyButtonStyle.Secondary -> MyTheme.colors.text
+                },
                 contentDescription = text,
             )
         }

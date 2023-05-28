@@ -50,7 +50,7 @@ object HomeScreen : Screen {
             )
             Spacer(modifier = Modifier.height(12.dp))
             MyButton(
-                text = "Open detail"
+                text = "Open detail",
             ) {
                 navigator.push(DetailScreen())
             }
