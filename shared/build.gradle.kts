@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
@@ -27,6 +28,7 @@ kotlin {
 
     sourceSets {
         val voyagerVersion = "1.0.0-rc06"
+        val ktorVersion = "2.3.0"
 
         val commonMain by getting {
             dependencies {
@@ -34,8 +36,13 @@ kotlin {
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
-                api("br.com.devsrsouza.compose.icons:feather:1.1.0")
+                api("br.com.devsrsouza.compose.icons:tabler-icons:1.1.0")
                 api("com.moriatsushi.insetsx:insetsx:0.1.0-alpha06")
+                api("io.ktor:ktor-client-core:$ktorVersion")
+                api("io.ktor:ktor-client-cio:$ktorVersion")
+                api("io.ktor:ktor-client-logging:$ktorVersion")
+                api("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
@@ -52,6 +59,9 @@ kotlin {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
+                dependencies {
+                    implementation("io.ktor:ktor-client-android:$ktorVersion")
+                }
             }
         }
         val iosX64Main by getting
@@ -62,6 +72,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            }
         }
     }
 }

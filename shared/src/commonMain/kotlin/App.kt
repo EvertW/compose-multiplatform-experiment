@@ -17,14 +17,15 @@ import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.ime
 import com.moriatsushi.insetsx.navigationBars
 import com.moriatsushi.insetsx.rememberWindowInsetsController
-import compose.icons.FeatherIcons
-import compose.icons.feathericons.Calendar
-import compose.icons.feathericons.Home
-import compose.icons.feathericons.Settings
+import compose.icons.TablerIcons
+import compose.icons.tablericons.Globe
+import compose.icons.tablericons.Home2
+import compose.icons.tablericons.List
+import compose.icons.tablericons.Settings
 import ui.library.menu.MyBottomMenu
 import ui.library.menu.MyBottomMenuItem
-import ui.screens.calendar.CalendarScreen
 import ui.screens.home.HomeScreen
+import ui.screens.trips.TripScreen
 import ui.screens.settings.SettingsScreen
 import ui.theme.MyTheme
 
@@ -59,24 +60,24 @@ fun App() {
                     when (navigator.lastItem) {
                         is HomeScreen,
                         is SettingsScreen,
-                        is CalendarScreen -> MyBottomMenu(
+                        is TripScreen -> MyBottomMenu(
                             modifier = Modifier.fillMaxWidth()
                                 .windowInsetsPadding(WindowInsets.navigationBars)
                         ) {
                             MyBottomMenuItem(
-                                icon = FeatherIcons.Home,
+                                icon = TablerIcons.Home2,
                                 contentDescription = "Home"
                             ) {
                                 navigator.replace(HomeScreen)
                             }
                             MyBottomMenuItem(
-                                icon = FeatherIcons.Calendar,
-                                contentDescription = "Calendar"
+                                icon = TablerIcons.Globe,
+                                contentDescription = "Trips"
                             ) {
-                                navigator.replace(CalendarScreen)
+                                navigator.replace(TripScreen)
                             }
                             MyBottomMenuItem(
-                                icon = FeatherIcons.Settings,
+                                icon = TablerIcons.Settings,
                                 contentDescription = "Settings"
                             ) {
                                 navigator.replace(SettingsScreen)

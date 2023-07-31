@@ -27,8 +27,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.moriatsushi.insetsx.statusBars
-import compose.icons.FeatherIcons
-import compose.icons.feathericons.ExternalLink
+import compose.icons.TablerIcons
+import compose.icons.tablericons.ExternalLink
+import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
 import ui.library.text.MyText
@@ -43,50 +44,60 @@ object HomeScreen : Screen {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier.fillMaxSize().verticalScroll(scrollState)
-                .padding(MyTheme.dimensions.contentPadding)
                 .windowInsetsPadding(WindowInsets.statusBars),
         ) {
-            Box(
-                modifier = Modifier
-                    .size(64.dp)
-                    .background(MyTheme.colors.primary),
-                contentAlignment = Alignment.Center
-            ) {
+            Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
+
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .background(MyTheme.colors.primary),
+                    contentAlignment = Alignment.Center
+                ) {
+                    MyText(
+                        text = "mpe",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 22.sp,
+                            lineHeight = 22.sp,
+                        ),
+                        color = MyTheme.colors.textInverse
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
                 MyText(
-                    text = "mpe",
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp,
-                        lineHeight = 22.sp,
-                    ),
-                    color = MyTheme.colors.textInverse
+                    text = "Multiplatform Experiment", style = MyTheme.typography.subTitle
                 )
+                Spacer(modifier = Modifier.height(8.dp))
+                MyText(
+                    text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    MyButton(
+                        text = "Open detail",
+                    ) {
+                        navigator.push(DetailScreen())
+                    }
+                    MyButton(
+                        text = "More info",
+                        icon = TablerIcons.ExternalLink,
+                        style = MyButtonStyle.Secondary
+                    ) {
+                        uriHandler.openUri("https://www.evertwoud.com")
+                    }
+                }
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            MyText(
-                text = "Multiplatform Experiment", style = MyTheme.typography.subTitle
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            MyText(
-                text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
-            )
             Spacer(modifier = Modifier.height(24.dp))
-            Row(
+            MyBanner(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                title = "Banner",
+                description = "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.",
             ) {
-                MyButton(
-                    text = "Open detail",
-                ) {
-                    navigator.push(DetailScreen())
-                }
-                MyButton(
-                    text = "More info",
-                    icon = FeatherIcons.ExternalLink,
-                    style = MyButtonStyle.Secondary
-                ) {
-                    uriHandler.openUri("https://www.evertwoud.com")
-                }
+
             }
         }
     }

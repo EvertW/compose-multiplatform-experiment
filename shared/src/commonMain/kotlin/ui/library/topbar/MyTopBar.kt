@@ -13,8 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import compose.icons.FeatherIcons
-import compose.icons.feathericons.ArrowLeft
+import compose.icons.TablerIcons
+import compose.icons.tablericons.ArrowBack
+import compose.icons.tablericons.ArrowLeft
 import ui.theme.MyTheme
 
 @Composable
@@ -33,7 +34,7 @@ fun MyTopBar(
         onBack?.let {
             Icon(
                 modifier = Modifier.size(56.dp).padding(16.dp).clickable(onClick = onBack),
-                imageVector = FeatherIcons.ArrowLeft,
+                imageVector = TablerIcons.ArrowLeft,
                 contentDescription = "Go back",
                 tint = MyTheme.colors.text
             )

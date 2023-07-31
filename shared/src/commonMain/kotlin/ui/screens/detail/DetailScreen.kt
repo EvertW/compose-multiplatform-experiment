@@ -25,8 +25,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.moriatsushi.insetsx.navigationBars
 import com.moriatsushi.insetsx.statusBars
-import compose.icons.FeatherIcons
-import compose.icons.feathericons.ArrowRight
+import compose.icons.TablerIcons
+import compose.icons.tablericons.ArrowRight
 import ui.library.text.MyText
 import ui.library.topbar.MyTopBar
 import ui.theme.MyTheme
@@ -78,7 +78,7 @@ class DetailScreen : Screen {
                             )
                             Icon(
                                 modifier = Modifier.size(16.dp),
-                                imageVector = FeatherIcons.ArrowRight,
+                                imageVector = TablerIcons.ArrowRight,
                                 contentDescription = null,
                             )
                         }
