@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 import ui.theme.MyThemeSetting
 
 class SettingsScreenModel(
-    private val api: NetworkClient,
     private val preferences: PreferenceStorage,
 ) : ScreenModel {
 
