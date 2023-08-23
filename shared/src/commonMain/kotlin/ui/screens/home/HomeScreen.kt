@@ -43,7 +43,7 @@ object HomeScreen : Screen {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
                 Box(
                     modifier = Modifier
-                        .size(64.dp)
+                        .size(48.dp)
                         .background(MyTheme.colors.primary),
                     contentAlignment = Alignment.Center
                 ) {
@@ -51,8 +51,8 @@ object HomeScreen : Screen {
                         text = "mpe",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
-                            fontSize = 22.sp,
-                            lineHeight = 22.sp,
+                            fontSize = 14.sp,
+                            lineHeight = 14.sp,
                         ),
                         color = MyTheme.colors.textInverse
                     )
