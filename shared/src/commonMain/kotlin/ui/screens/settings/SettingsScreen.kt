@@ -1,5 +1,7 @@
 package ui.screens.settings
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.moriatsushi.insetsx.statusBars
@@ -22,6 +25,7 @@ import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
 import ui.theme.MyTheme
+import ui.theme.MyThemeSetting
 
 object SettingsScreen : Screen {
     @Composable
@@ -29,9 +33,39 @@ object SettingsScreen : Screen {
         val screenModel = rememberScreenModel<SettingsScreenModel>()
         val scrollState = rememberScrollState()
 
+
         LaunchedEffect(screenModel) {
             screenModel.init()
         }
+
+        if (screenModel.showThemeDialog) {
+            Dialog(onDismissRequest = {
+                screenModel.showThemeDialog = false
+            }) {
+                Column(
+                    modifier = Modifier.background(MyTheme.colors.surface).fillMaxWidth()
+                ) {
+                    MyThemeSetting.entries.forEach { theme ->
+                        MyText(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    screenModel.settings.theme = theme
+//                                    screenModel.showThemeDialog = false
+                                }
+                                .padding(MyTheme.dimensions.contentPadding),
+                            style = MyTheme.typography.listItem,
+                            color = when (screenModel.settings.theme) {
+                                theme -> MyTheme.colors.primary
+                                else -> MyTheme.colors.text
+                            },
+                            text = theme.label,
+                        )
+                    }
+                }
+            }
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -59,13 +93,12 @@ object SettingsScreen : Screen {
             SettingsRow(
                 label = "Language",
                 onClick = {
-
                 },
             )
             SettingsRow(
                 label = "Theme",
                 onClick = {
-
+                    screenModel.showThemeDialog = true
                 },
             )
             Spacer(modifier = Modifier.height(24.dp))

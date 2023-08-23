@@ -5,14 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import data.api.NetworkClient
-import ui.theme.MyThemeOption
+import data.settings.SettingsManager
 
 class SettingsScreenModel(
-    private val api: NetworkClient
+    private val api: NetworkClient,
+    val settings: SettingsManager,
 ) : ScreenModel {
 
-    var theme by mutableStateOf(MyThemeOption.SYSTEM)
-        private set
+    var showThemeDialog by mutableStateOf(false)
 
     fun init() {
     }
