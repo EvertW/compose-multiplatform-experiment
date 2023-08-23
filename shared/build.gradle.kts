@@ -30,13 +30,14 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
+                api("androidx.datastore:datastore-preferences-core:1.1.0-alpha04")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-kodein:$voyagerVersion")
                 api("br.com.devsrsouza.compose.icons:tabler-icons:1.1.0")
-                api("com.moriatsushi.insetsx:insetsx:0.1.0-alpha06")
+                api("com.moriatsushi.insetsx:insetsx:0.1.0-alpha10")
                 api("io.ktor:ktor-client-core:$ktorVersion")
                 api("io.ktor:ktor-client-cio:$ktorVersion")
                 api("io.ktor:ktor-client-logging:$ktorVersion")
@@ -89,7 +90,6 @@ android {
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
-        targetSdk = (findProperty("android.targetSdk") as String).toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

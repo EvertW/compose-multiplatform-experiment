@@ -9,7 +9,7 @@ val ScreenModelModule = DI.Module(name = "ScreenModelModule") {
     bindProvider {
         SettingsScreenModel(
             api = instance(),
-            settings = instance(),
+            preferences = instance(),
         )
     }
 }

@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -45,17 +46,23 @@ object SettingsScreen : Screen {
                 Column(
                     modifier = Modifier.background(MyTheme.colors.surface).fillMaxWidth()
                 ) {
+                    MyText(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(MyTheme.dimensions.contentPadding),
+                        style = MyTheme.typography.subTitle,
+                        text = "Select a theme",
+                    )
                     MyThemeSetting.entries.forEach { theme ->
                         MyText(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable {
-                                    screenModel.settings.theme = theme
-//                                    screenModel.showThemeDialog = false
+                                    screenModel.updateTheme(theme)
                                 }
                                 .padding(MyTheme.dimensions.contentPadding),
                             style = MyTheme.typography.listItem,
-                            color = when (screenModel.settings.theme) {
+                            color = when (screenModel.theme.collectAsState(null).value) {
                                 theme -> MyTheme.colors.primary
                                 else -> MyTheme.colors.text
                             },

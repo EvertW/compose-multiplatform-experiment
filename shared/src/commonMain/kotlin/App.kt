@@ -1,12 +1,12 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
-import data.settings.SettingsManager
-import di.DependencyInjector
-import org.kodein.di.compose.localDI
+import data.storage.PreferenceStorage
+import di.createDependencyInjector
 import org.kodein.di.compose.withDI
-import org.kodein.di.instance
 import ui.screens.MainScreen
 import ui.theme.MyColorsDark
 import ui.theme.MyColorsLight
@@ -14,39 +14,38 @@ import ui.theme.MyTheme
 import ui.theme.MyThemeSetting
 
 @Composable
-fun App() = withDI(DependencyInjector) {
-    val di = localDI()
-    val settingsManager by di.instance<SettingsManager>()
+fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(preferences)) {
     val windowInsetsController = rememberWindowInsetsController()
+    val theme by preferences.theme.collectAsState(null)
 
-    LaunchedEffect(settingsManager.theme) {
+    LaunchedEffect(theme) {
         // The status bars icon + content will change to a light color
         windowInsetsController?.setStatusBarContentColor(
-            dark = when (settingsManager.theme) {
+            dark = when (theme) {
                 MyThemeSetting.LIGHT -> true
-                MyThemeSetting.DARK -> false
+                else -> false
             }
         )
         // The navigation bars icons will change to a light color (android only)
         windowInsetsController?.setNavigationBarsContentColor(
-            dark = when (settingsManager.theme) {
+            dark = when (theme) {
                 MyThemeSetting.LIGHT -> true
-                MyThemeSetting.DARK -> false
+                else -> false
             }
         )
         // Make system bars immersive
         windowInsetsController?.setSystemBarsBehavior(SystemBarsBehavior.Immersive)
     }
 
-    val colors = when (settingsManager.theme) {
-        MyThemeSetting.LIGHT -> MyColorsLight()
-        MyThemeSetting.DARK -> MyColorsDark()
-    }
-
-    MyTheme(
-        colors = colors
-    ) {
-        MainScreen()
+    theme?.let {
+        MyTheme(
+            colors = when (it) {
+                MyThemeSetting.LIGHT -> MyColorsLight()
+                MyThemeSetting.DARK -> MyColorsDark()
+            }
+        ) {
+            MainScreen()
+        }
     }
 }
 

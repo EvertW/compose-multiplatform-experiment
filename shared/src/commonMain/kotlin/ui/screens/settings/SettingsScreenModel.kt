@@ -4,16 +4,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import data.api.NetworkClient
-import data.settings.SettingsManager
+import data.storage.PreferenceStorage
+import kotlinx.coroutines.launch
+import ui.theme.MyThemeSetting
 
 class SettingsScreenModel(
     private val api: NetworkClient,
-    val settings: SettingsManager,
+    private val preferences: PreferenceStorage,
 ) : ScreenModel {
 
     var showThemeDialog by mutableStateOf(false)
 
+    val theme = preferences.theme
+
     fun init() {
+    }
+
+    fun updateTheme(theme: MyThemeSetting) = coroutineScope.launch {
+        preferences.updateTheme(theme)
     }
 }
