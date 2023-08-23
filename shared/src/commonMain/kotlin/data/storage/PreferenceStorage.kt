@@ -16,12 +16,12 @@ class PreferenceStorage(
         private val THEME_KEY = stringPreferencesKey("theme")
 
         fun create(
-            fileName: String = "preferences.preferences_pb",
+            fileName: String = "preferences",
             path: (name: String) -> String,
         ): DataStore<Preferences> = PreferenceDataStoreFactory.createWithPath(
             corruptionHandler = null,
             migrations = emptyList(),
-            produceFile = { path(fileName).toPath() },
+            produceFile = { path("$fileName.preferences_pb").toPath() },
         )
     }
 
