@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
 @Immutable
-class MyColors internal constructor(
+data class MyColors internal constructor(
     val transparent: Color = Color(0x00000000),
     val background: Color,
     val text: Color,

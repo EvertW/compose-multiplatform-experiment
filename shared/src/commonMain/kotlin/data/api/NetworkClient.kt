@@ -1,7 +1,7 @@
 package data.api
 
 import data.api.state.NetworkDataState
-import data.models.Trip
+import data.models.Collection
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -52,7 +52,7 @@ class NetworkClient {
         }
     }
 
-    suspend fun getJokes(): Flow<NetworkDataState<Trip>> {
+    suspend fun getJokes(): Flow<NetworkDataState<Collection>> {
         return networkRequest(
             url = "https://v2.jokeapi.dev/joke/Any?type=twopart&amount=10",
         )

@@ -18,36 +18,29 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
-import compose.icons.tablericons.ExternalLink
+import compose.icons.tablericons.ArrowUpRight
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
 import ui.library.text.MyText
-import ui.screens.detail.DetailScreen
 import ui.theme.MyTheme
 
 object HomeScreen : Screen {
     @Composable
     override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        val uriHandler = LocalUriHandler.current
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier.fillMaxSize().verticalScroll(scrollState)
                 .windowInsetsPadding(WindowInsets.statusBars),
         ) {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
-
                 Box(
                     modifier = Modifier
                         .size(64.dp)
@@ -66,7 +59,7 @@ object HomeScreen : Screen {
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 MyText(
-                    text = "Multiplatform Experiment", style = MyTheme.typography.subTitle
+                    text = "Multiplatform Example", style = MyTheme.typography.subTitle
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 MyText(
@@ -78,16 +71,14 @@ object HomeScreen : Screen {
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     MyButton(
-                        text = "Open detail",
+                        text = "Primary button",
                     ) {
-                        navigator.push(DetailScreen())
                     }
                     MyButton(
-                        text = "More info",
-                        icon = TablerIcons.ExternalLink,
+                        text = "Secondary button",
+                        icon = TablerIcons.ArrowUpRight,
                         style = MyButtonStyle.Secondary
                     ) {
-                        uriHandler.openUri("https://www.evertwoud.com")
                     }
                 }
             }
