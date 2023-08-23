@@ -2,11 +2,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
+import di.DependencyInjector
+import org.kodein.di.compose.withDI
 import ui.screens.MainScreen
 import ui.theme.MyTheme
 
 @Composable
-fun App() {
+fun App() = withDI(DependencyInjector) {
     val windowInsetsController = rememberWindowInsetsController()
     LaunchedEffect(Unit) {
         // The status bars icon + content will change to a light color
