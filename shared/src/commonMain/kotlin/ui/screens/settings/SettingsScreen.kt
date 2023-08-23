@@ -21,10 +21,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.moriatsushi.insetsx.statusBars
 import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
+import ui.screens.settings.licenses.LicenseScreen
 import ui.theme.MyTheme
 import ui.theme.MyThemeSetting
 
@@ -33,7 +36,7 @@ object SettingsScreen : Screen {
     override fun Content() {
         val screenModel = rememberScreenModel<SettingsScreenModel>()
         val scrollState = rememberScrollState()
-
+        val navigator = LocalNavigator.currentOrThrow
 
         LaunchedEffect(screenModel) {
             screenModel.init()
@@ -116,15 +119,9 @@ object SettingsScreen : Screen {
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsRow(
-                label = "Terms & conditions",
-                onClick = {
-
-                },
-            )
-            SettingsRow(
                 label = "Licences",
                 onClick = {
-
+                    navigator.push(LicenseScreen())
                 },
             )
             Spacer(modifier = Modifier.height(24.dp))

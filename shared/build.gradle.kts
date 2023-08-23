@@ -4,6 +4,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.mikepenz.aboutlibraries.plugin")
 }
 
 kotlin {
@@ -45,6 +46,8 @@ kotlin {
                 api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 api("org.kodein.di:kodein-di:7.20.1")
                 api("org.kodein.di:kodein-di-framework-compose:7.20.1")
+                api("com.mikepenz:aboutlibraries-core:10.9.0-b01")
+                api("com.mikepenz:aboutlibraries-compose:10.9.0-b01")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)

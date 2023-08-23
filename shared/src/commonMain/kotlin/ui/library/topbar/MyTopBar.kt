@@ -8,13 +8,14 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import compose.icons.TablerIcons
-import compose.icons.tablericons.ArrowBack
 import compose.icons.tablericons.ArrowLeft
 import ui.theme.MyTheme
 
@@ -33,7 +34,12 @@ fun MyTopBar(
     ) {
         onBack?.let {
             Icon(
-                modifier = Modifier.size(56.dp).padding(16.dp).clickable(onClick = onBack),
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .size(56.dp)
+                    .padding(8.dp)
+                    .clickable(onClick = onBack)
+                    .padding(8.dp),
                 imageVector = TablerIcons.ArrowLeft,
                 contentDescription = "Go back",
                 tint = MyTheme.colors.text
