@@ -4,7 +4,7 @@ import data.api.state.NetworkDataState
 import data.models.ExampleResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
 import io.ktor.client.plugins.logging.LogLevel
@@ -20,7 +20,7 @@ import kotlinx.serialization.json.Json
 
 class NetworkClient {
     @OptIn(ExperimentalSerializationApi::class)
-    private val client = HttpClient(CIO) {
+    private val client = HttpClient(provideEngine()) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
@@ -58,3 +58,5 @@ class NetworkClient {
         )
     }
 }
+
+expect fun provideEngine(): HttpClientEngine

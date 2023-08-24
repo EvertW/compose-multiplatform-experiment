@@ -95,6 +95,7 @@ object HomeScreen : Screen {
             Spacer(modifier = Modifier.height(24.dp))
             when (val state = screenModel.fact) {
                 is NetworkDataState.Error -> MyText(
+                    modifier = Modifier.fillMaxWidth().padding(MyTheme.dimensions.contentPadding),
                     text = "Something went wrong",
                     style = MyTheme.typography.body
                 )
