@@ -8,8 +8,8 @@
     <string name="settings_language_nl">Nederlands</string>
     <string name="settings_theme">Thema</string>
     <string name="settings_theme_selection">Kies een thema</string>
-    <string name="settings_theme_dark">Licht</string>
-    <string name="settings_theme_light">Donker</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_light">Licht</string>
     <string name="settings_other">Overig</string>
     <string name="settings_licenses">Licensies</string>
     <string name="settings_version">Versie: %s</string>
