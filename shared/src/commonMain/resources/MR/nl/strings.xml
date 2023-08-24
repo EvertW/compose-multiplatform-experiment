@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="settings_title">Instellingen</string>
+    <string name="settings_appearance">Uiterlijk</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_other">Overig</string>
+    <string name="settings_licenses">Licensies</string>
+    <string name="settings_version">Version: %s</string>
 </resources>

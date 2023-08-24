@@ -26,8 +26,8 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.statusBars
 import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.Resource
-import dev.icerock.moko.resources.desc.StringDesc
+import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.resources.format
 import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
@@ -89,7 +89,7 @@ object SettingsScreen : Screen {
         ) {
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = StringDesc.Resource(MR.strings.settings_title).localized(),
+                text = MR.strings.settings_title.desc().localized(),
                 style = MyTheme.typography.title
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -100,17 +100,17 @@ object SettingsScreen : Screen {
             Spacer(modifier = Modifier.height(24.dp))
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = "Appearance",
+                text = MR.strings.settings_appearance.desc().localized(),
                 style = MyTheme.typography.subTitle
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsRow(
-                label = "Language",
+                label = MR.strings.settings_language.desc().localized(),
                 onClick = {
                 },
             )
             SettingsRow(
-                label = "Theme",
+                label = MR.strings.settings_theme.desc().localized(),
                 onClick = {
                     screenModel.showThemeDialog = true
                 },
@@ -118,12 +118,12 @@ object SettingsScreen : Screen {
             Spacer(modifier = Modifier.height(24.dp))
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = "Other",
+                text = MR.strings.settings_other.desc().localized(),
                 style = MyTheme.typography.subTitle
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsRow(
-                label = "Licences",
+                label = MR.strings.settings_licenses.desc().localized(),
                 onClick = {
                     navigator.push(LicenseScreen())
                 },
@@ -133,7 +133,7 @@ object SettingsScreen : Screen {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = "Version: ${getAppVersion()}",
+                text = MR.strings.settings_version.format(getAppVersion()).localized(),
                 style = MyTheme.typography.label.copy(textAlign = TextAlign.Center),
             )
         }
