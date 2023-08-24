@@ -11,6 +11,8 @@ actual fun IssueSubmitter(
     ) -> Unit
 ) {
     content.invoke { subject, description ->
-        UIApplication.sharedApplication.openURL(NSURL("mailto:?to=contact@evertwoud.com&subject=$subject&body=$description"))
+        UIApplication.sharedApplication.openURL(
+            NSURL(string = "mailto:?to=contact@evertwoud.com&subject=$subject&body=$description")
+        )
     }
 }
