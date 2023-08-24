@@ -52,9 +52,9 @@ class NetworkClient {
         }
     }
 
-    suspend fun getJokes(): Flow<NetworkDataState<ExampleResponse>> {
+    suspend fun getExampleResponse(): Flow<NetworkDataState<ExampleResponse>> {
         return networkRequest(
-            url = "https://v2.jokeapi.dev/joke/Any?type=twopart&amount=10",
+            url = "https://dog-api.kinduff.com/api/facts",
         )
     }
 }

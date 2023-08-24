@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -23,19 +24,28 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowUpRight
+import data.api.state.NetworkDataState
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
+import ui.library.loading.MyLoadingIndicator
 import ui.library.text.MyText
 import ui.theme.MyTheme
 
 object HomeScreen : Screen {
     @Composable
     override fun Content() {
+        val screenModel = rememberScreenModel<HomeScreenModel>()
         val scrollState = rememberScrollState()
+
+        LaunchedEffect(screenModel) {
+            screenModel.init()
+        }
+
         Column(
             modifier = Modifier.fillMaxSize().verticalScroll(scrollState)
                 .windowInsetsPadding(WindowInsets.statusBars),
@@ -83,13 +93,23 @@ object HomeScreen : Screen {
                 }
             }
             Spacer(modifier = Modifier.height(24.dp))
-            MyBanner(
-                modifier = Modifier.fillMaxWidth(),
-                title = "Banner",
-                description = "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.",
-            ) {
+            when (val state = screenModel.fact) {
+                is NetworkDataState.Error -> MyText(
+                    text = "Something went wrong",
+                    style = MyTheme.typography.body
+                )
 
+                is NetworkDataState.Success -> MyBanner(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = "Dog fact",
+                    description = state.data.facts.firstOrNull().orEmpty(),
+                ) {
+                    screenModel.request()
+                }
+
+                else -> MyLoadingIndicator(modifier = Modifier.fillMaxWidth())
             }
+
         }
     }
 }

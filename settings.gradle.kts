@@ -1,4 +1,4 @@
-rootProject.name = "MultiCompose"
+rootProject.name = "Multiplatform Example"
 
 include(":androidApp")
 include(":shared")
