@@ -33,6 +33,7 @@ import dev.icerock.moko.resources.format
 import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
+import ui.screens.settings.issue.ReportIssueScreen
 import ui.screens.settings.licenses.LicenseScreen
 import ui.theme.MyTheme
 
@@ -162,6 +163,12 @@ object SettingsScreen : Screen {
                 label = MR.strings.settings_licenses.desc().localized(),
                 onClick = {
                     navigator.push(LicenseScreen())
+                },
+            )
+            SettingsRow(
+                label = MR.strings.settings_report_issue.desc().localized(),
+                onClick = {
+                    navigator.push(ReportIssueScreen())
                 },
             )
             Spacer(modifier = Modifier.height(24.dp))

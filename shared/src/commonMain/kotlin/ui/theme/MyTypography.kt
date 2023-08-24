@@ -13,6 +13,7 @@ class MyTypography internal constructor(
     val label: TextStyle,
     val button: TextStyle,
     val listItem: TextStyle,
+    val input: TextStyle,
 )
 
 internal fun MyTypography() = MyTypography(
@@ -42,6 +43,11 @@ internal fun MyTypography() = MyTypography(
         lineHeight = 18.sp,
     ),
     listItem = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 20.sp,
+    ),
+    input = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 20.sp,

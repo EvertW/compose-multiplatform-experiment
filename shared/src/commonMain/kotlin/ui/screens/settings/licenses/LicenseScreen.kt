@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,13 +15,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.safeArea
+import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.readTextAsState
+import dev.icerock.moko.resources.desc.desc
 import ui.library.text.MyText
 import ui.library.topbar.MyTopBar
 import ui.screens.settings.licenses.component.LicenseRow
@@ -43,18 +47,19 @@ class LicenseScreen : Screen {
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeArea),
         ) {
-            MyTopBar(
-                content = {
-                    MyText(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Licences",
-                        style = MyTheme.typography.title
-                    )
-                }
-            ) {
+            MyTopBar {
                 navigator.pop()
             }
             LazyColumn(modifier = Modifier.weight(1F).fillMaxWidth()) {
+                item("licence-header") {
+                    MyText(
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(horizontal = MyTheme.dimensions.contentPadding),
+                        text = MR.strings.settings_licenses.desc().localized(),
+                        style = MyTheme.typography.title
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
                 items(screenModel.libs?.libraries.orEmpty(), key = { it.uniqueId }) { library ->
                     LicenseRow(
                         modifier = Modifier.fillMaxWidth(),
