@@ -12,15 +12,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.safeArea
+import dev.icerock.moko.resources.compose.readTextAsState
 import ui.library.text.MyText
 import ui.library.topbar.MyTopBar
-import ui.resources.loadLicences
 import ui.screens.settings.licenses.component.LicenseRow
 import ui.screens.settings.licenses.detail.LicenseDetailScreen
 import ui.theme.MyTheme
@@ -30,10 +32,10 @@ class LicenseScreen : Screen {
     override fun Content() {
         val screenModel = rememberScreenModel<LicenseScreenModel>()
         val navigator = LocalNavigator.currentOrThrow
-        val licenseJson = loadLicences()
+        val licenseJson by MR.assets.aboutlibraries.readTextAsState()
 
-        LaunchedEffect(screenModel) {
-            screenModel.init(licenseJson)
+        LaunchedEffect(licenseJson) {
+            licenseJson?.let { json -> screenModel.load(json) }
         }
 
         Column(

@@ -4,85 +4,65 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import ui.resources.font
+import com.evertwoud.multiplatform.example.MR
+import dev.icerock.moko.resources.compose.asFont
 
 internal object MyFonts {
-    private const val SORA = "Space Grotesk"
-    private const val DM_SANS = "DM Sans"
-
     val Sora
         @Composable
         get() = FontFamily(
-            font(
-                name = SORA,
-                res = "sora_extrabold",
-                weight = FontWeight.ExtraBold,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_bold",
-                weight = FontWeight.Bold,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_medium",
-                weight = FontWeight.Medium,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_semibold",
-                weight = FontWeight.SemiBold,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_regular",
-                weight = FontWeight.Normal,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_light",
-                weight = FontWeight.Light,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_extralight",
-                weight = FontWeight.ExtraLight,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = SORA,
-                res = "sora_thin",
-                weight = FontWeight.Thin,
-                style = FontStyle.Normal
-            ),
+            listOfNotNull(
+                MR.fonts.sora.extrabold.asFont(
+                    weight = FontWeight.ExtraBold,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.bold.asFont(
+                    weight = FontWeight.Bold,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.medium.asFont(
+                    weight = FontWeight.Medium,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.semibold.asFont(
+                    weight = FontWeight.SemiBold,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.regular.asFont(
+                    weight = FontWeight.Normal,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.light.asFont(
+                    weight = FontWeight.Light,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.extralight.asFont(
+                    weight = FontWeight.ExtraLight,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.sora.thin.asFont(
+                    weight = FontWeight.Thin,
+                    style = FontStyle.Normal
+                ),
+            )
         )
 
     val DmSans
         @Composable
         get() = FontFamily(
-            font(
-                name = DM_SANS,
-                res = "dmsans_bold",
-                weight = FontWeight.Bold,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = DM_SANS,
-                res = "dmsans_medium",
-                weight = FontWeight.Medium,
-                style = FontStyle.Normal
-            ),
-            font(
-                name = DM_SANS,
-                res = "dmsans_regular",
-                weight = FontWeight.Normal,
-                style = FontStyle.Normal
-            ),
+            listOfNotNull(
+                MR.fonts.dmsans.bold.asFont(
+                    weight = FontWeight.Bold,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.dmsans.medium.asFont(
+                    weight = FontWeight.Medium,
+                    style = FontStyle.Normal
+                ),
+                MR.fonts.dmsans.regular.asFont(
+                    weight = FontWeight.Normal,
+                    style = FontStyle.Normal
+                ),
+            )
         )
 }

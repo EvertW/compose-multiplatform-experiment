@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("com.mikepenz.aboutlibraries.plugin")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -48,6 +49,8 @@ kotlin {
                 api("org.kodein.di:kodein-di-framework-compose:7.20.1")
                 api("com.mikepenz:aboutlibraries-core:10.9.0-b01")
                 api("com.mikepenz:aboutlibraries-compose:10.9.0-b01")
+                api("dev.icerock.moko:resources:0.23.0")
+                api("dev.icerock.moko:resources-compose:0.23.0")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
@@ -59,6 +62,7 @@ kotlin {
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             kotlin.srcDirs("src/jvmMain/kotlin")
             dependencies {
                 api("androidx.activity:activity-compose:1.7.2")
@@ -84,6 +88,10 @@ kotlin {
     }
 }
 
+multiplatformResources {
+    multiplatformResourcesPackage = "com.evertwoud.multiplatform.example"
+}
+
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     namespace = "com.myapplication.common"
@@ -102,3 +110,4 @@ android {
         jvmToolchain(11)
     }
 }
+

@@ -23,7 +23,11 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.statusBars
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.Resource
+import dev.icerock.moko.resources.desc.StringDesc
 import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
@@ -85,7 +89,7 @@ object SettingsScreen : Screen {
         ) {
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = "Settings",
+                text = StringDesc.Resource(MR.strings.settings_title).localized(),
                 style = MyTheme.typography.title
             )
             Spacer(modifier = Modifier.height(4.dp))
