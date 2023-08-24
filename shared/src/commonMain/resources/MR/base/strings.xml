@@ -12,5 +12,5 @@
     <string name="settings_theme_light">Dark</string>
     <string name="settings_other">Other</string>
     <string name="settings_licenses">Licenses</string>
-    <string name="settings_version">Versie: %s</string>
+    <string name="settings_version">Version: %s</string>
 </resources>

@@ -12,5 +12,5 @@
     <string name="settings_theme_light">Donker</string>
     <string name="settings_other">Overig</string>
     <string name="settings_licenses">Licensies</string>
-    <string name="settings_version">Version: %s</string>
+    <string name="settings_version">Versie: %s</string>
 </resources>

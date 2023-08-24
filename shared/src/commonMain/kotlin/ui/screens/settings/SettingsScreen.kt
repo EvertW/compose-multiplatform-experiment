@@ -59,7 +59,7 @@ object SettingsScreen : Screen {
                             .fillMaxWidth()
                             .padding(MyTheme.dimensions.contentPadding),
                         style = MyTheme.typography.subTitle,
-                        text = "Select a theme",
+                        text = MR.strings.settings_theme_selection.desc().localized(),
                     )
                     ThemePreference.entries.forEach { theme ->
                         MyText(
@@ -93,7 +93,7 @@ object SettingsScreen : Screen {
                             .fillMaxWidth()
                             .padding(MyTheme.dimensions.contentPadding),
                         style = MyTheme.typography.subTitle,
-                        text = "Select a language",
+                        text = MR.strings.settings_language_selection.desc().localized(),
                     )
                     LanguagePreference.entries.forEach { language ->
                         MyText(
