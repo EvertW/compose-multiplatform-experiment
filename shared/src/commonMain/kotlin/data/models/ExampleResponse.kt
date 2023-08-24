@@ -3,7 +3,7 @@ package data.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Collection(
+data class ExampleResponse(
     val id: Long,
     val name: String,
     val description: String,

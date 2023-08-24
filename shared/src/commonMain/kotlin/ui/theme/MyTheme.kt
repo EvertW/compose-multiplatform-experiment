@@ -13,7 +13,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import kotlin.experimental.ExperimentalObjCRefinement
 
-internal val LocalMyThemeColors = staticCompositionLocalOf { MyColorsLight() }
+internal val LocalMyThemeColors = staticCompositionLocalOf { MyColors.light }
 internal val LocalMyThemeTypography = staticCompositionLocalOf { MyTypography() }
 internal val LocalMyThemeDimensions = staticCompositionLocalOf { MyDimens() }
 

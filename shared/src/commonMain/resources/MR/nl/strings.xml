@@ -3,7 +3,13 @@
     <string name="settings_title">Instellingen</string>
     <string name="settings_appearance">Uiterlijk</string>
     <string name="settings_language">Taal</string>
+    <string name="settings_language_selection">Kies een taal</string>
+    <string name="settings_language_en">Engels</string>
+    <string name="settings_language_nl">Nederlands</string>
     <string name="settings_theme">Thema</string>
+    <string name="settings_theme_selection">Kies een thema</string>
+    <string name="settings_theme_dark">Licht</string>
+    <string name="settings_theme_light">Donker</string>
     <string name="settings_other">Overig</string>
     <string name="settings_licenses">Licensies</string>
     <string name="settings_version">Version: %s</string>

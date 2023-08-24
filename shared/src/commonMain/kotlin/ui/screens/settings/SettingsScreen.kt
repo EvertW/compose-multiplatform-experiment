@@ -25,6 +25,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.statusBars
+import data.models.preferences.LanguagePreference
+import data.models.preferences.ThemePreference
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.resources.format
@@ -33,7 +35,6 @@ import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
 import ui.screens.settings.licenses.LicenseScreen
 import ui.theme.MyTheme
-import ui.theme.MyThemeSetting
 
 object SettingsScreen : Screen {
     @Composable
@@ -60,7 +61,7 @@ object SettingsScreen : Screen {
                         style = MyTheme.typography.subTitle,
                         text = "Select a theme",
                     )
-                    MyThemeSetting.entries.forEach { theme ->
+                    ThemePreference.entries.forEach { theme ->
                         MyText(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -73,7 +74,41 @@ object SettingsScreen : Screen {
                                 theme -> MyTheme.colors.primary
                                 else -> MyTheme.colors.text
                             },
-                            text = theme.label,
+                            text = theme.label.desc().localized(),
+                        )
+                    }
+                }
+            }
+        }
+
+        if (screenModel.showLanguageDialog) {
+            Dialog(onDismissRequest = {
+                screenModel.showLanguageDialog = false
+            }) {
+                Column(
+                    modifier = Modifier.background(MyTheme.colors.surface).fillMaxWidth()
+                ) {
+                    MyText(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(MyTheme.dimensions.contentPadding),
+                        style = MyTheme.typography.subTitle,
+                        text = "Select a language",
+                    )
+                    LanguagePreference.entries.forEach { language ->
+                        MyText(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    screenModel.updateLanguage(language)
+                                }
+                                .padding(MyTheme.dimensions.contentPadding),
+                            style = MyTheme.typography.listItem,
+                            color = when (screenModel.language.collectAsState(null).value) {
+                                language -> MyTheme.colors.primary
+                                else -> MyTheme.colors.text
+                            },
+                            text = language.label.desc().localized(),
                         )
                     }
                 }
@@ -107,6 +142,7 @@ object SettingsScreen : Screen {
             SettingsRow(
                 label = MR.strings.settings_language.desc().localized(),
                 onClick = {
+                    screenModel.showLanguageDialog = true
                 },
             )
             SettingsRow(

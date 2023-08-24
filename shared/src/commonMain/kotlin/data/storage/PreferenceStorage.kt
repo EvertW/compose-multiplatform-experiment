@@ -5,15 +5,17 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import data.models.preferences.LanguagePreference
+import data.models.preferences.ThemePreference
 import kotlinx.coroutines.flow.map
 import okio.Path.Companion.toPath
-import ui.theme.MyThemeSetting
 
 class PreferenceStorage(
     private val store: DataStore<Preferences>,
 ) {
     companion object {
         private val THEME_KEY = stringPreferencesKey("theme")
+        private val LANGUAGE_KEY = stringPreferencesKey("language")
 
         fun create(
             fileName: String = "preferences",
@@ -25,13 +27,29 @@ class PreferenceStorage(
         )
     }
 
+    /**
+     * Theme
+     */
     val theme = store.data.map { preferences ->
-        MyThemeSetting.entries.firstOrNull {
+        ThemePreference.entries.firstOrNull {
             it.name == preferences[THEME_KEY]
-        } ?: MyThemeSetting.DARK
+        } ?: ThemePreference.DARK
     }
 
-    suspend fun updateTheme(value: MyThemeSetting) = store.edit { preferences ->
+    suspend fun updateTheme(value: ThemePreference) = store.edit { preferences ->
         preferences[THEME_KEY] = value.name
+    }
+
+    /**
+     * Language
+     */
+    val language = store.data.map { preferences ->
+        LanguagePreference.entries.firstOrNull {
+            it.name == preferences[LANGUAGE_KEY]
+        }
+    }
+
+    suspend fun updateLanguage(value: LanguagePreference) = store.edit { preferences ->
+        preferences[LANGUAGE_KEY] = value.name
     }
 }

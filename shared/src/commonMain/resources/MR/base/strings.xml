@@ -3,7 +3,13 @@
     <string name="settings_title">Settings</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_language">Language</string>
+    <string name="settings_language_selection">Select a language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_nl">Dutch</string>
     <string name="settings_theme">Theme</string>
+    <string name="settings_theme_selection">Select a theme</string>
+    <string name="settings_theme_dark">Light</string>
+    <string name="settings_theme_light">Dark</string>
     <string name="settings_other">Other</string>
     <string name="settings_licenses">Licenses</string>
     <string name="settings_version">Versie: %s</string>
