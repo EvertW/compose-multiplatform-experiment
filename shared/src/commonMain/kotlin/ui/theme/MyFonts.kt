@@ -8,7 +8,6 @@ import com.evertwoud.multiplatform.example.MR
 import dev.icerock.moko.resources.compose.asFont
 
 internal object MyFonts {
-
     val Sora
         @Composable
         get() = FontFamily(

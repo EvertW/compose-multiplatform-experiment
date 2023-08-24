@@ -70,9 +70,9 @@ object SettingsScreen : Screen {
                                 }
                                 .padding(MyTheme.dimensions.contentPadding),
                             style = MyTheme.typography.listItem,
-                            color = when (screenModel.theme.collectAsState(null).value) {
-                                theme -> MyTheme.colors.primary
-                                else -> MyTheme.colors.text
+                            color = when (screenModel.theme.collectAsState(null).value == theme) {
+                                true -> MyTheme.colors.primary
+                                false -> MyTheme.colors.text
                             },
                             text = theme.label.desc().localized(),
                         )

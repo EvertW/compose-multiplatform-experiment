@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="error_generic">Er is iets mis gegaan. Probeer het later opnieuw.</string>
+
     <string name="settings_title">Instellingen</string>
     <string name="settings_appearance">Uiterlijk</string>
     <string name="settings_language">Taal</string>

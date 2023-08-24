@@ -5,7 +5,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.ripple.rememberRipple
@@ -43,6 +45,7 @@ fun MyBanner(
                 text = title, style = MyTheme.typography.subTitle,
                 color = MyTheme.colors.textInverse
             )
+            Spacer(modifier = Modifier.height(2.dp))
             MyText(
                 text = description, style = MyTheme.typography.body,
                 color = MyTheme.colors.textInverse

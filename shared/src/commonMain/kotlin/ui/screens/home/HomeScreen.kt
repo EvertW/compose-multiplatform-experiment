@@ -1,5 +1,6 @@
 package ui.screens.home
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,6 +33,7 @@ import data.api.state.NetworkDataState
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
+import ui.library.error.MyErrorStateComponent
 import ui.library.loading.MyLoadingIndicator
 import ui.library.text.MyText
 import ui.theme.MyTheme
@@ -92,25 +94,32 @@ object HomeScreen : Screen {
                     }
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
-            when (val state = screenModel.fact) {
-                is NetworkDataState.Error -> MyText(
-                    modifier = Modifier.fillMaxWidth().padding(MyTheme.dimensions.contentPadding),
-                    text = "Something went wrong",
-                    style = MyTheme.typography.body
-                )
+            Spacer(modifier = Modifier.height(16.dp))
+            Crossfade(
+                targetState = screenModel.fact,
+            ) { state ->
+                when (state) {
+                    is NetworkDataState.Error -> MyErrorStateComponent(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = MyTheme.dimensions.contentPadding),
+                    )
 
-                is NetworkDataState.Success -> MyBanner(
-                    modifier = Modifier.fillMaxWidth(),
-                    title = "Dog fact",
-                    description = state.data.facts.firstOrNull().orEmpty(),
-                ) {
-                    screenModel.request()
+                    is NetworkDataState.Success -> MyBanner(
+                        modifier = Modifier.fillMaxWidth(),
+                        title = "Dog fact",
+                        description = state.data.facts.firstOrNull().orEmpty(),
+                    ) {
+
+                    }
+
+                    else -> MyLoadingIndicator(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = MyTheme.dimensions.contentPadding)
+                    )
                 }
-
-                else -> MyLoadingIndicator(modifier = Modifier.fillMaxWidth())
             }
-
         }
     }
 }
