@@ -1,9 +1,11 @@
 package ui.screens.settings.issue
 
 import androidx.compose.runtime.Composable
+import kotlinx.cinterop.BetaInteropApi
 import platform.Foundation.NSURL
 import platform.UIKit.UIApplication
 
+@OptIn(BetaInteropApi::class)
 @Composable
 actual fun IssueSubmitter(
     content: @Composable (
