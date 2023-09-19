@@ -29,6 +29,7 @@ import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowUpRight
+import compose.icons.tablericons.Refresh
 import data.api.state.NetworkDataState
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
@@ -100,10 +101,10 @@ object HomeScreen : Screen {
 
                     is NetworkDataState.Success -> MyBanner(
                         modifier = Modifier.fillMaxWidth(),
-                        title = "Dog fact",
+                        actionIcon = TablerIcons.Refresh,
                         description = state.data.facts.firstOrNull().orEmpty(),
                     ) {
-
+                        screenModel.request()
                     }
 
                     else -> MyLoadingIndicator(

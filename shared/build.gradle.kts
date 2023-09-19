@@ -32,7 +32,7 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
-                api("androidx.datastore:datastore-preferences-core:1.1.0-alpha04")
+                api("androidx.datastore:datastore-preferences-core:1.1.0-alpha05")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
