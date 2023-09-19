@@ -26,7 +26,6 @@ fun MyInput(
     modifier: Modifier = Modifier,
     label: String,
     value: TextFieldValue,
-    hint: String? = null,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions(
         capitalization = KeyboardCapitalization.Sentences,
@@ -36,7 +35,7 @@ fun MyInput(
     onValueChange: (TextFieldValue) -> Unit
 ) {
     BasicTextField(
-        modifier = modifier.animateContentSize(),
+        modifier = modifier,
         onValueChange = onValueChange,
         value = value,
         keyboardActions = keyboardActions,
@@ -44,27 +43,16 @@ fun MyInput(
         decorationBox = { field ->
             Column(
                 modifier = Modifier
-                    .background(MyTheme.colors.background)
-                    .border(
-                        width = 2.dp,
-                        color = MyTheme.colors.text,
-                    )
+                    .background(MyTheme.colors.surface)
                     .padding(12.dp),
             ) {
-                if (value.text.isNotEmpty() || hint != null) {
-                    MyText(
-                        text = label,
-                        style = MyTheme.typography.label
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                }
                 Box(modifier = Modifier.fillMaxWidth()) {
                     field()
                     if (value.text.isEmpty()) {
                         MyText(
-                            text = hint ?: label,
+                            text = label,
                             style = MyTheme.typography.input,
-                            color = MyTheme.colors.text.copy(alpha = 0.7F),
+                            color = MyTheme.colors.text.copy(alpha = 0.5F),
                         )
                     }
                 }

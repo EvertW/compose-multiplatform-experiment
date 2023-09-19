@@ -32,7 +32,7 @@ fun MyButton(
     style: MyButtonStyle = MyButtonStyle.Primary,
     onClick: () -> Unit
 ) {
-    val shape = remember { RectangleShape }
+    val shape = remember { CircleShape }
     val interactionSource = remember { MutableInteractionSource() }
 
     Row(

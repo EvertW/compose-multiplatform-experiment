@@ -13,8 +13,12 @@ actual fun IssueSubmitter(
     ) -> Unit
 ) {
     content.invoke { subject, description ->
-        UIApplication.sharedApplication.openURL(
+        val url =
             NSURL(string = "mailto:?to=contact@evertwoud.com&subject=$subject&body=$description")
-        )
+        if (UIApplication.sharedApplication.canOpenURL(url)) {
+            UIApplication.sharedApplication.openURL(url)
+        } else {
+            print("Can't open url on this device")
+        }
     }
 }

@@ -54,19 +54,15 @@ object HomeScreen : Screen {
         ) {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
                 Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .background(MyTheme.colors.primary),
+                    modifier = Modifier.size(48.dp).background(MyTheme.colors.primary),
                     contentAlignment = Alignment.Center
                 ) {
                     MyText(
-                        text = "mpe",
-                        style = TextStyle(
+                        text = "mpe", style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp,
                             lineHeight = 14.sp,
-                        ),
-                        color = MyTheme.colors.textInverse
+                        ), color = MyTheme.colors.textInverse
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
@@ -84,14 +80,12 @@ object HomeScreen : Screen {
                 ) {
                     MyButton(
                         text = "Primary button",
-                    ) {
-                    }
+                    ) {}
                     MyButton(
                         text = "Secondary button",
                         icon = TablerIcons.ArrowUpRight,
                         style = MyButtonStyle.Secondary
-                    ) {
-                    }
+                    ) {}
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -100,8 +94,7 @@ object HomeScreen : Screen {
             ) { state ->
                 when (state) {
                     is NetworkDataState.Error -> MyErrorStateComponent(
-                        modifier = Modifier
-                            .fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                             .padding(horizontal = MyTheme.dimensions.contentPadding),
                     )
 
@@ -114,8 +107,7 @@ object HomeScreen : Screen {
                     }
 
                     else -> MyLoadingIndicator(
-                        modifier = Modifier
-                            .fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                             .padding(horizontal = MyTheme.dimensions.contentPadding)
                     )
                 }

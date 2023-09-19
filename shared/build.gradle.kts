@@ -13,7 +13,6 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
     cocoapods {
         version = "1.0.0"
         summary = "Some description for the Shared Module"
@@ -23,12 +22,13 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+            export("dev.icerock.moko:resources:0.23.0")
         }
     }
 
     sourceSets {
         val voyagerVersion = "1.0.0-rc06"
-        val ktorVersion = "2.3.0"
+        val ktorVersion = "2.3.3"
 
         val commonMain by getting {
             dependencies {
