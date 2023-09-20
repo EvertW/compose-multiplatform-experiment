@@ -134,15 +134,16 @@ object HomeScreen : Screen {
             Spacer(modifier = Modifier.height(16.dp))
             LazyRow(
                 modifier = Modifier.fillMaxWidth().height(156.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 items(screenModel.dogImages, key = { it }) { url ->
                     KamelImage(
                         modifier = Modifier.fillMaxHeight()
+                            .clip(RoundedCornerShape(8.dp))
                             .background(MyTheme.colors.surface)
                             .aspectRatio(1F)
-                            .clip(RoundedCornerShape(8.dp)),
+                        ,
                         resource = asyncPainterResource(data = url),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
