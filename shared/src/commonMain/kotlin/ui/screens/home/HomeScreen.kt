@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -55,22 +57,27 @@ object HomeScreen : Screen {
         ) {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
                 Box(
-                    modifier = Modifier.size(48.dp).background(MyTheme.colors.primary),
+                    modifier = Modifier.size(48.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(MyTheme.colors.primary),
                     contentAlignment = Alignment.Center
                 ) {
                     MyText(
-                        text = "mpe", style = TextStyle(
+                        text = "mpe",
+                        style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp,
                             lineHeight = 14.sp,
-                        ), color = MyTheme.colors.textInverse
+                        ),
+                        color = MyTheme.colors.textInverse
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 MyText(
-                    text = "Multiplatform Example", style = MyTheme.typography.subTitle
+                    text = "Multiplatform Example",
+                    style = MyTheme.typography.title
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 MyText(
                     text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
                 )
