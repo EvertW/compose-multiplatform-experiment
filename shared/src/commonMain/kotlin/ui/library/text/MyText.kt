@@ -1,6 +1,5 @@
 package ui.library.text
 
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +19,7 @@ fun MyText(
     font: FontFamily = when (style) {
         MyTheme.typography.title,
         MyTheme.typography.subTitle,
-        -> MyFonts.Sora
+        -> MyFonts.Poppins
 
         else -> MyFonts.DmSans
     },

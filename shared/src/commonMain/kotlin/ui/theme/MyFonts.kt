@@ -8,40 +8,24 @@ import com.evertwoud.multiplatform.example.MR
 import dev.icerock.moko.resources.compose.asFont
 
 internal object MyFonts {
-    val Sora
+    val Poppins
         @Composable
         get() = FontFamily(
             listOfNotNull(
-                MR.fonts.sora.extrabold.asFont(
-                    weight = FontWeight.ExtraBold,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.sora.bold.asFont(
+                MR.fonts.poppins.bold.asFont(
                     weight = FontWeight.Bold,
                     style = FontStyle.Normal
                 ),
-                MR.fonts.sora.medium.asFont(
+                MR.fonts.poppins.medium.asFont(
                     weight = FontWeight.Medium,
                     style = FontStyle.Normal
                 ),
-                MR.fonts.sora.semibold.asFont(
+                MR.fonts.poppins.semibold.asFont(
                     weight = FontWeight.SemiBold,
                     style = FontStyle.Normal
                 ),
-                MR.fonts.sora.regular.asFont(
+                MR.fonts.poppins.regular.asFont(
                     weight = FontWeight.Normal,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.sora.light.asFont(
-                    weight = FontWeight.Light,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.sora.extralight.asFont(
-                    weight = FontWeight.ExtraLight,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.sora.thin.asFont(
-                    weight = FontWeight.Thin,
                     style = FontStyle.Normal
                 ),
             )

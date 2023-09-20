@@ -18,7 +18,7 @@ class MyTypography internal constructor(
 
 internal fun MyTypography() = MyTypography(
     title = TextStyle(
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 24.sp,
         lineHeight = 28.sp,
     ),
