@@ -32,6 +32,7 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
+                api("media.kamel:kamel-image:0.7.3")
                 api("androidx.datastore:datastore-preferences-core:1.1.0-alpha05")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")

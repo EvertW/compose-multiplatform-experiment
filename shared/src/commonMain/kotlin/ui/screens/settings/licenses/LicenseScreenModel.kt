@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class LicenseScreenModel : ScreenModel {
     var libs by mutableStateOf<NetworkDataState<Libs>>(NetworkDataState.Loading)
-    var selection by mutableStateOf<Library?>(null)
 
     fun load(licenceJson: String) {
         coroutineScope.launch(Dispatchers.IO) {

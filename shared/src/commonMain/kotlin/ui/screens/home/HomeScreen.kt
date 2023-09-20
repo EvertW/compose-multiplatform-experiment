@@ -1,19 +1,25 @@
 package ui.screens.home
 
-import androidx.compose.animation.Crossfade
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -22,6 +28,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,9 +37,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
+import compose.icons.tablericons.ArrowRight
 import compose.icons.tablericons.ArrowUpRight
 import compose.icons.tablericons.Refresh
 import data.api.state.NetworkDataState
+import io.kamel.image.KamelImage
+import io.kamel.image.asyncPainterResource
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
@@ -88,6 +98,7 @@ object HomeScreen : Screen {
                 ) {
                     MyButton(
                         text = "Primary button",
+                        icon = TablerIcons.ArrowRight,
                     ) {}
                     MyButton(
                         text = "Secondary button",
@@ -97,7 +108,7 @@ object HomeScreen : Screen {
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            Crossfade(
+            AnimatedContent(
                 targetState = screenModel.fact,
             ) { state ->
                 when (state) {
@@ -117,6 +128,25 @@ object HomeScreen : Screen {
                     else -> MyLoadingIndicator(
                         modifier = Modifier.fillMaxWidth()
                             .padding(horizontal = MyTheme.dimensions.contentPadding)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            LazyRow(
+                modifier = Modifier.fillMaxWidth().height(156.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp)
+            ) {
+                items(screenModel.dogImages, key = { it }) { url ->
+                    KamelImage(
+                        modifier = Modifier.fillMaxHeight()
+                            .background(MyTheme.colors.surface)
+                            .aspectRatio(1F)
+                            .clip(RoundedCornerShape(8.dp)),
+                        resource = asyncPainterResource(data = url),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        animationSpec = tween(),
                     )
                 }
             }
