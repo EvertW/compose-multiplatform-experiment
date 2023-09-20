@@ -22,9 +22,12 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.safeArea
+import data.api.state.NetworkDataState
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.readTextAsState
 import dev.icerock.moko.resources.desc.desc
+import ui.library.error.MyErrorStateComponent
+import ui.library.loading.MyLoadingIndicator
 import ui.library.text.MyText
 import ui.library.topbar.MyTopBar
 import ui.screens.settings.licenses.component.LicenseRow
@@ -43,9 +46,7 @@ class LicenseScreen : Screen {
         }
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.safeArea),
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeArea),
         ) {
             MyTopBar {
                 navigator.pop()
@@ -60,14 +61,32 @@ class LicenseScreen : Screen {
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                 }
-                items(screenModel.libs?.libraries.orEmpty(), key = { it.uniqueId }) { library ->
-                    LicenseRow(
-                        modifier = Modifier.fillMaxWidth(),
-                        library = library,
-                    ) {
-                        navigator.push(LicenseDetailScreen(library))
+                when (val state = screenModel.libs) {
+                    is NetworkDataState.Error -> item("error") {
+                        MyErrorStateComponent(
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(horizontal = MyTheme.dimensions.contentPadding),
+                        )
+                    }
+
+                    is NetworkDataState.Success -> items(items = state.data.libraries,
+                        key = { it.uniqueId }) { library ->
+                        LicenseRow(
+                            modifier = Modifier.fillMaxWidth(),
+                            library = library,
+                        ) {
+                            navigator.push(LicenseDetailScreen(library))
+                        }
+                    }
+
+                    else -> item("loader") {
+                        MyLoadingIndicator(
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(horizontal = MyTheme.dimensions.contentPadding)
+                        )
                     }
                 }
+
                 item("bottom-spacer") { Spacer(modifier = Modifier.height(MyTheme.dimensions.contentPadding)) }
             }
         }
