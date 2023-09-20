@@ -62,7 +62,7 @@ class ReportIssueScreen : Screen {
                 Spacer(modifier = Modifier.height(24.dp))
                 MyInput(
                     modifier = Modifier.fillMaxWidth(),
-                    label = "Subject",
+                    label = MR.strings.settings_report_issue_subject_hint.desc().localized(),
                     value = screenModel.subject,
                 ) { value ->
                     screenModel.subject = value
@@ -70,7 +70,7 @@ class ReportIssueScreen : Screen {
                 Spacer(modifier = Modifier.height(12.dp))
                 MyInput(
                     modifier = Modifier.fillMaxWidth(),
-                    label = "Description",
+                    label = MR.strings.settings_report_issue_description_hint.desc().localized(),
                     value = screenModel.description,
                     minLines = 5,
                     maxLines = Int.MAX_VALUE

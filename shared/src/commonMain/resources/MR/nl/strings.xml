@@ -17,5 +17,7 @@
     <string name="settings_other">Overig</string>
     <string name="settings_licenses">Licensies</string>
     <string name="settings_report_issue">Probleem rapporteren</string>
+    <string name="settings_report_issue_subject_hint">Onderwerp</string>
+    <string name="settings_report_issue_description_hint">Beschrijf je probleem</string>
     <string name="settings_version">Versie: %s</string>
 </resources>

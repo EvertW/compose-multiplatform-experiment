@@ -1,19 +1,17 @@
 package ui.library.input
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
@@ -43,6 +41,7 @@ fun MyInput(
         decorationBox = { field ->
             Column(
                 modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
                     .background(MyTheme.colors.surface)
                     .padding(12.dp),
             ) {
@@ -52,7 +51,7 @@ fun MyInput(
                         MyText(
                             text = label,
                             style = MyTheme.typography.input,
-                            color = MyTheme.colors.text.copy(alpha = 0.5F),
+                            color = MyTheme.colors.hint,
                         )
                     }
                 }

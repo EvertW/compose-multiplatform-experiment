@@ -17,5 +17,7 @@
     <string name="settings_other">Other</string>
     <string name="settings_licenses">Licenses</string>
     <string name="settings_report_issue">Report an issue</string>
+    <string name="settings_report_issue_subject_hint">Subject</string>
+    <string name="settings_report_issue_description_hint">Describe your problem</string>
     <string name="settings_version">Version: %s</string>
 </resources>
