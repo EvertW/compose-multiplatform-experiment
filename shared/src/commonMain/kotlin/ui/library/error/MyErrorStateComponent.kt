@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.evertwoud.multiplatform.example.MR
 import compose.icons.TablerIcons
@@ -25,6 +27,7 @@ fun MyErrorStateComponent(
 ) {
     Row(
         modifier = modifier
+            .clip(RoundedCornerShape(8.dp))
             .background(MyTheme.colors.surface)
             .padding(MyTheme.dimensions.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
@@ -39,7 +42,7 @@ fun MyErrorStateComponent(
         MyText(
             modifier = Modifier.weight(1F),
             text = error ?: MR.strings.error_generic.desc().localized(),
-            style = MyTheme.typography.button,
+            style = MyTheme.typography.body,
             color = MyTheme.colors.text,
         )
     }

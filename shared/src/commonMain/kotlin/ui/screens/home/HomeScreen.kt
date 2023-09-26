@@ -135,21 +135,34 @@ object HomeScreen : Screen {
             LazyRow(
                 modifier = Modifier.fillMaxWidth().height(156.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp)
+                contentPadding = PaddingValues(horizontal = MyTheme.dimensions.contentPadding)
             ) {
                 items(screenModel.dogImages, key = { it }) { url ->
                     KamelImage(
                         modifier = Modifier.fillMaxHeight()
                             .clip(RoundedCornerShape(8.dp))
                             .background(MyTheme.colors.surface)
-                            .aspectRatio(1F)
-                        ,
+                            .aspectRatio(1F),
                         resource = asyncPainterResource(data = url),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         animationSpec = tween(),
                     )
                 }
+            }
+            Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
+                MyText(
+                    text = "More information",
+                    style = MyTheme.typography.subTitle
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                MyText(
+                    text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                MyText(
+                    text = "Mollit enim qui magna voluptate amet excepteur ex duis in Lorem pariatur cillum. Commodo fugiat nostrud consequat. Cupidatat labore nisi sit magna ex deserunt proident tempor nisi esse quis nulla excepteur veniam minim."
+                )
             }
         }
     }

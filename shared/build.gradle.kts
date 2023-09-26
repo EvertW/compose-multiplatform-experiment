@@ -28,7 +28,7 @@ kotlin {
 
     sourceSets {
         val voyagerVersion = "1.0.0-rc06"
-        val ktorVersion = "2.3.3"
+        val ktorVersion = "2.3.4"
 
         val commonMain by getting {
             dependencies {
@@ -68,7 +68,7 @@ kotlin {
             dependencies {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.10.1")
+                api("androidx.core:core-ktx:1.12.0")
                 dependencies {
                     implementation("io.ktor:ktor-client-android:$ktorVersion")
                 }
@@ -91,6 +91,7 @@ kotlin {
 
 multiplatformResources {
     multiplatformResourcesPackage = "com.evertwoud.multiplatform.example"
+    disableStaticFrameworkWarning = true
 }
 
 android {
