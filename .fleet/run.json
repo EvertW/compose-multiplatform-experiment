@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "android",
+            "type": "android-app",
+            "workingDir": "$PROJECT_DIR$",
+            "allowParallelRun": true,
+            "module": "Multiplatform_Example.androidApp.main",
+            "destination": "Google Pixel 8 Pro"
+        },
+        {
+            "name": "iosApp",
+            "type": "xcode-app",
+            "workingDir": "$PROJECT_DIR$",
+            "buildTarget": {
+                "project": "iosApp",
+                "target": "iosApp"
+            },
+            "configuration": "Debug",
+            "destination": "iPhone 15 Pro Max | iOS 17.0"
+        }
+    ]
+}
