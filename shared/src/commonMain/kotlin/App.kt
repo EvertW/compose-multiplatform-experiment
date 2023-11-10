@@ -1,13 +1,16 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
+import data.api.provideEngine
 import data.models.preferences.ThemePreference
 import data.storage.PreferenceStorage
 import dev.icerock.moko.resources.desc.StringDesc
 import di.createDependencyInjector
+import io.kamel.core.config.KamelConfig
+import io.kamel.core.config.httpFetcher
+import io.kamel.core.config.takeFrom
+import io.kamel.image.config.Default
+import io.kamel.image.config.LocalKamelConfig
 import org.kodein.di.compose.withDI
 import ui.screens.MainScreen
 import ui.theme.MyColors
@@ -17,6 +20,13 @@ import ui.theme.MyTheme
 fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(preferences)) {
     val windowInsetsController = rememberWindowInsetsController()
     val theme by preferences.theme.collectAsState(null)
+    val kamelConfig = remember {
+        KamelConfig {
+            takeFrom(KamelConfig.Default)
+            httpFetcher(provideEngine())
+        }
+    }
+
     // Update locale
     LaunchedEffect(Unit) {
         preferences.language.collect { value ->
@@ -44,15 +54,18 @@ fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(prefer
         // Make system bars immersive
         windowInsetsController?.setSystemBarsBehavior(SystemBarsBehavior.Immersive)
     }
-    // Initialize view
-    theme?.let {
-        MyTheme(
-            colors = when (it) {
-                ThemePreference.LIGHT -> MyColors.light
-                ThemePreference.DARK -> MyColors.dark
+
+    CompositionLocalProvider(LocalKamelConfig provides kamelConfig) {
+        // Initialize view
+        theme?.let {
+            MyTheme(
+                colors = when (it) {
+                    ThemePreference.LIGHT -> MyColors.light
+                    ThemePreference.DARK -> MyColors.dark
+                }
+            ) {
+                MainScreen()
             }
-        ) {
-            MainScreen()
         }
     }
 }

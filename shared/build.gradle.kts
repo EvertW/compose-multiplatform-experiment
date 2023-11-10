@@ -52,6 +52,7 @@ kotlin {
                 api("com.mikepenz:aboutlibraries-compose:10.9.2")
                 api("dev.icerock.moko:resources:0.23.0")
                 api("dev.icerock.moko:resources-compose:0.23.0")
+                api("co.touchlab:kermit:2.0.2")
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
