@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import data.api.NetworkClient
 import data.api.state.networkDataStateOf
 import data.models.ExampleResponse
@@ -28,7 +29,7 @@ class HomeScreenModel(
     }
 
     fun request() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             api.getExampleResponse().collect {
                 fact = it
             }
