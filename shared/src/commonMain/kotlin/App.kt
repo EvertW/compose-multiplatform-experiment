@@ -1,4 +1,7 @@
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
 import data.api.provideEngine
@@ -64,7 +67,13 @@ fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(prefer
                     ThemePreference.DARK -> MyColors.dark
                 }
             ) {
-                MainScreen()
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MyTheme.colors.background,
+                    contentColor = MyTheme.colors.primary,
+                ) {
+                    MainScreen()
+                }
             }
         }
     }

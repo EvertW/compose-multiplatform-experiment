@@ -44,14 +44,6 @@ fun MyTheme(
         LocalMyThemeDimensions provides dimensions,
         LocalIndication provides rememberRipple(),
         LocalRippleTheme provides MyRipple,
-        content = {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MyTheme.colors.background,
-                contentColor = MyTheme.colors.primary,
-            ) {
-                content.invoke()
-            }
-        },
+        content = content,
     )
 }
