@@ -5,9 +5,9 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.api.NetworkClient
+import data.api.state.NetworkDataState
 import data.api.state.networkDataStateOf
 import data.models.api.BreedResponse
-import data.models.api.FactsResponse
 import kotlinx.coroutines.launch
 
 class BreedScreenModel(
@@ -18,7 +18,7 @@ class BreedScreenModel(
     var breeds by networkDataStateOf<List<BreedResponse>>()
 
     fun init() {
-        request()
+        if (breeds !is NetworkDataState.Success) request()
     }
 
     private fun request() {

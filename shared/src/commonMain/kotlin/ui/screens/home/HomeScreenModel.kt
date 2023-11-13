@@ -5,6 +5,7 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.api.NetworkClient
+import data.api.state.NetworkDataState
 import data.api.state.networkDataStateOf
 import data.models.api.FactsResponse
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class HomeScreenModel(
     var fact by networkDataStateOf<FactsResponse>()
 
     fun init() {
-        request()
+        if (fact !is NetworkDataState.Success) request()
     }
 
     fun request() {

@@ -56,19 +56,19 @@ fun MainScreen() {
                             icon = TablerIcons.Home2,
                             contentDescription = "Home"
                         ) {
-                            navigator.replace(HomeScreen)
+                            navigator.replaceAll(HomeScreen)
                         }
                         MyBottomMenuItem(
                             icon = TablerIcons.List,
                             contentDescription = "Breeds"
                         ) {
-                            navigator.replace(BreedScreen)
+                            navigator.replaceAll(BreedScreen)
                         }
                         MyBottomMenuItem(
                             icon = TablerIcons.Settings,
                             contentDescription = "Settings"
                         ) {
-                            navigator.replace(SettingsScreen)
+                            navigator.replaceAll(SettingsScreen)
                         }
                     }
                 }
