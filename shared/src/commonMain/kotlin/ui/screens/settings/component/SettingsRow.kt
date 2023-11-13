@@ -38,7 +38,7 @@ fun SettingsRow(
         )
         Icon(
             modifier = Modifier
-                .background(MyTheme.colors.primary)
+                .background(MyTheme.colors.primary, RoundedCornerShape(4.dp))
                 .size(24.dp)
                 .padding(4.dp),
             imageVector = TablerIcons.ArrowRight,
