@@ -3,6 +3,6 @@ package data.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ExampleResponse(
+data class FactsResponse(
     val facts: List<String>,
 )

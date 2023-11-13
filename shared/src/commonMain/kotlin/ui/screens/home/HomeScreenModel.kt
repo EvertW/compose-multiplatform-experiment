@@ -3,11 +3,10 @@ package ui.screens.home
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.api.NetworkClient
 import data.api.state.networkDataStateOf
-import data.models.ExampleResponse
+import data.models.FactsResponse
 import kotlinx.coroutines.launch
 
 class HomeScreenModel(
@@ -22,7 +21,7 @@ class HomeScreenModel(
         "https://www.usatoday.com/gcdn/presto/2020/03/17/USAT/c0eff9ec-e0e4-42db-b308-f748933229ee-XXX_ThinkstockPhotos-200460053-001.jpg?crop=1170,658,x292,y120&width=1170&height=585&format=pjpg&auto=webp"
     )
 
-    var fact by networkDataStateOf<ExampleResponse>()
+    var fact by networkDataStateOf<FactsResponse>()
 
     fun init() {
         request()
@@ -30,7 +29,7 @@ class HomeScreenModel(
 
     fun request() {
         screenModelScope.launch {
-            api.getExampleResponse().collect {
+            api.requests.getFacts().collect {
                 fact = it
             }
         }

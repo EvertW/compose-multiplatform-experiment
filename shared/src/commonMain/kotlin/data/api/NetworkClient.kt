@@ -1,7 +1,7 @@
 package data.api
 
+import data.api.requests.NetworkRequests
 import data.api.state.NetworkDataState
-import data.models.ExampleResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.HttpClientEngine
@@ -19,8 +19,10 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
 class NetworkClient {
+    val requests = NetworkRequests(this)
+
     @OptIn(ExperimentalSerializationApi::class)
-    private val client = HttpClient(provideEngine()) {
+    val client = HttpClient(provideEngine()) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
@@ -39,7 +41,7 @@ class NetworkClient {
         }
     }
 
-    private suspend inline fun <reified T> networkRequest(
+    suspend inline fun <reified T> networkRequest(
         url: String,
         crossinline builder: (HttpRequestBuilder.() -> Unit) = ({}),
     ): Flow<NetworkDataState<T>> = flow {
@@ -50,12 +52,6 @@ class NetworkClient {
         } catch (e: Exception) {
             emit(NetworkDataState.Error(e))
         }
-    }
-
-    suspend fun getExampleResponse(): Flow<NetworkDataState<ExampleResponse>> {
-        return networkRequest(
-            url = "https://dog-api.kinduff.com/api/facts",
-        )
     }
 }
 
