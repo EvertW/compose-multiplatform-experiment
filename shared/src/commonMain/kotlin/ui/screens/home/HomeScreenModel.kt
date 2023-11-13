@@ -6,7 +6,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.api.NetworkClient
 import data.api.state.networkDataStateOf
-import data.models.FactsResponse
+import data.models.api.FactsResponse
 import kotlinx.coroutines.launch
 
 class HomeScreenModel(

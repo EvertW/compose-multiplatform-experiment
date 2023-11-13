@@ -127,9 +127,9 @@ object SettingsScreen : Screen {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.statusBars)
                 .verticalScroll(scrollState)
-                .padding(vertical = MyTheme.dimensions.contentPadding)
-                .windowInsetsPadding(WindowInsets.statusBars),
+                .padding(vertical = MyTheme.dimensions.contentPadding),
         ) {
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),

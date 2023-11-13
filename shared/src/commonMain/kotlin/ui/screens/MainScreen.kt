@@ -18,10 +18,12 @@ import com.moriatsushi.insetsx.navigationBars
 import compose.icons.TablerIcons
 import compose.icons.tablericons.BuildingWarehouse
 import compose.icons.tablericons.Home2
+import compose.icons.tablericons.List
 import compose.icons.tablericons.Settings
 import compose.icons.tablericons.ShoppingCart
 import ui.library.menu.MyBottomMenu
 import ui.library.menu.MyBottomMenuItem
+import ui.screens.breeds.BreedScreen
 import ui.screens.home.HomeScreen
 import ui.screens.settings.SettingsScreen
 import ui.theme.MyTheme
@@ -45,7 +47,8 @@ fun MainScreen() {
             bottomBar = {
                 when (navigator.lastItem) {
                     is HomeScreen,
-                    is SettingsScreen -> MyBottomMenu(
+                    is SettingsScreen,
+                    is BreedScreen-> MyBottomMenu(
                         modifier = Modifier.fillMaxWidth()
                             .windowInsetsPadding(WindowInsets.navigationBars)
                     ) {
@@ -54,6 +57,12 @@ fun MainScreen() {
                             contentDescription = "Home"
                         ) {
                             navigator.replace(HomeScreen)
+                        }
+                        MyBottomMenuItem(
+                            icon = TablerIcons.List,
+                            contentDescription = "Breeds"
+                        ) {
+                            navigator.replace(BreedScreen)
                         }
                         MyBottomMenuItem(
                             icon = TablerIcons.Settings,

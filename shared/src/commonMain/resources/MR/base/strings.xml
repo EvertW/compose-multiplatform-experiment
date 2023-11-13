@@ -4,6 +4,8 @@
 
     <string name="error_generic">Something went wrong. Please try again later.</string>
 
+    <string name="breeds_title">Dog breeds</string>
+
     <string name="settings_title">Settings</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_language">Language</string>

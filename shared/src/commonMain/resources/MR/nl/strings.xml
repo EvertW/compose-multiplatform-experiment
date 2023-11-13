@@ -4,6 +4,8 @@
 
     <string name="error_generic">Er is iets mis gegaan. Probeer het later opnieuw.</string>
 
+    <string name="breeds_title">Hondenrassen</string>
+
     <string name="settings_title">Instellingen</string>
     <string name="settings_appearance">Uiterlijk</string>
     <string name="settings_language">Taal</string>
