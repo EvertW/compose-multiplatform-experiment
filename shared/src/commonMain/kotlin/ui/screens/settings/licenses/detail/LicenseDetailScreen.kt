@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -67,7 +68,8 @@ class LicenseDetailScreen(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 MyText(
-                    modifier = Modifier.background(MyTheme.colors.primary).padding(4.dp),
+                    modifier = Modifier.background(MyTheme.colors.primary, CircleShape)
+                        .padding(vertical = 4.dp, horizontal = 8.dp),
                     text = library.artifactVersion.orEmpty(),
                     color = MyTheme.colors.textInverse,
                     style = MyTheme.typography.label

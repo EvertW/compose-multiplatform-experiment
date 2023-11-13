@@ -21,7 +21,7 @@ data class MyColors internal constructor(
                 textInverse = Color(0xFF000000),
                 hint = Color(0xFFFFFFFF).copy(alpha = 0.5F),
                 surface = Color(0xFF171717),
-                primary = Color(0xFFFBE75D),
+                primary = Color(0xFFDCF96D),
             )
 
         val light
