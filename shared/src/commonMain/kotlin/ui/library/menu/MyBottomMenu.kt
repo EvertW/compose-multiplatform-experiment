@@ -21,7 +21,9 @@ fun MyBottomMenu(
     items: @Composable RowScope.() -> Unit
 ) {
     Row(
-        modifier = modifier.background(color = MyTheme.colors.background).height(56.dp),
+        modifier = modifier
+            .background(MyTheme.colors.background)
+            .height(MyTheme.dimensions.navigationBarHeight),
         content = items
     )
 }
@@ -34,7 +36,7 @@ fun RowScope.MyBottomMenuItem(
     onClick: () -> Unit,
 ) {
     Box(
-        modifier = Modifier.weight(1F).clickable(onClick = onClick),
+        modifier = Modifier.fillMaxHeight().weight(1F).clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Icon(

@@ -22,6 +22,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.safeArea
+import com.moriatsushi.insetsx.statusBars
+import com.moriatsushi.insetsx.systemBars
 import data.api.state.NetworkDataState
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.desc.desc
@@ -43,7 +45,7 @@ object BreedScreen : Screen {
         }
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeArea),
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.statusBars),
             contentPadding = PaddingValues(vertical = MyTheme.dimensions.contentPadding)
         ) {
             item("header") {

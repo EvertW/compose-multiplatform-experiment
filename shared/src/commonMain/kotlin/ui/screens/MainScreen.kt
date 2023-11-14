@@ -1,5 +1,6 @@
 package ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,8 +40,8 @@ fun MainScreen() {
             containerColor = MyTheme.colors.background,
             contentColor = MyTheme.colors.primary,
             contentWindowInsets = WindowInsets(0.dp),
-            content = {
-                Box(modifier = Modifier.padding(it).fillMaxSize()) {
+            content = { padding ->
+                Box(modifier = Modifier.padding(padding).fillMaxSize()) {
                     CurrentScreen()
                 }
             },
@@ -49,8 +50,7 @@ fun MainScreen() {
                     is HomeScreen,
                     is SettingsScreen,
                     is BreedScreen-> MyBottomMenu(
-                        modifier = Modifier.fillMaxWidth()
-                            .windowInsetsPadding(WindowInsets.navigationBars)
+                        modifier = Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars)
                     ) {
                         MyBottomMenuItem(
                             icon = TablerIcons.Home2,
