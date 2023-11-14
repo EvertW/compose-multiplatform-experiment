@@ -55,16 +55,16 @@ class LicenseDetailScreen(
             ) {
                 MyText(
                     modifier = Modifier.fillMaxWidth(),
-                    text = library.name,
-                    style = MyTheme.typography.title
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                MyText(
-                    modifier = Modifier.fillMaxWidth(),
                     text = library.organization?.name ?: library.developers.joinToString(", ") {
                         it.name.orEmpty()
                     },
                     style = MyTheme.typography.label
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                MyText(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = library.name,
+                    style = MyTheme.typography.title
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 MyText(
