@@ -27,13 +27,13 @@ kotlin {
     }
 
     sourceSets {
-        val voyagerVersion = "1.0.0-rc10"
-        val ktorVersion = "2.3.6"
+        val voyagerVersion = "1.0.0"
+        val ktorVersion = "2.3.7"
 
         val commonMain by getting {
             dependencies {
                 api("media.kamel:kamel-image:0.8.3")
-                api("androidx.datastore:datastore-preferences-core:1.1.0-alpha06")
+                api("androidx.datastore:datastore-preferences-core:1.1.0-beta01")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
@@ -48,8 +48,8 @@ kotlin {
                 api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 api("org.kodein.di:kodein-di:7.20.2")
                 api("org.kodein.di:kodein-di-framework-compose:7.20.2")
-                api("com.mikepenz:aboutlibraries-core:10.9.2")
-                api("com.mikepenz:aboutlibraries-compose:10.9.2")
+                api("com.mikepenz:aboutlibraries-core:10.10.0")
+                api("com.mikepenz:aboutlibraries-compose:10.10.0")
                 api("dev.icerock.moko:resources:0.23.0")
                 api("dev.icerock.moko:resources-compose:0.23.0")
                 api("co.touchlab:kermit:2.0.2")
@@ -67,7 +67,7 @@ kotlin {
             dependsOn(commonMain)
             kotlin.srcDirs("src/jvmMain/kotlin")
             dependencies {
-                api("androidx.activity:activity-compose:1.8.0")
+                api("androidx.activity:activity-compose:1.8.2")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.12.0")
                 dependencies {
