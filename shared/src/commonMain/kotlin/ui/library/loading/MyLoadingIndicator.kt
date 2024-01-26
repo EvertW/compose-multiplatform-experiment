@@ -1,6 +1,6 @@
 package ui.library.loading
 
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ui.theme.MyTheme
@@ -12,6 +12,6 @@ fun MyLoadingIndicator(
     LinearProgressIndicator(
         modifier = modifier,
         color = MyTheme.colors.primary,
-        trackColor = MyTheme.colors.surface
+        backgroundColor = MyTheme.colors.surface,
     )
 }

@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowRight
-import compose.icons.tablericons.InfoCircle
 import ui.library.text.MyText
 import ui.theme.MyTheme
 

@@ -27,7 +27,7 @@ kotlin {
     }
 
     sourceSets {
-        val voyagerVersion = "1.0.0"
+        val voyagerVersion = "1.1.0-alpha02"
         val ktorVersion = "2.3.7"
 
         val commonMain by getting {
@@ -46,8 +46,8 @@ kotlin {
                 api("io.ktor:ktor-client-logging:$ktorVersion")
                 api("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                api("org.kodein.di:kodein-di:7.20.2")
-                api("org.kodein.di:kodein-di-framework-compose:7.20.2")
+                api("org.kodein.di:kodein-di:7.21.2")
+                api("org.kodein.di:kodein-di-framework-compose:7.21.2")
                 api("com.mikepenz:aboutlibraries-core:10.10.0")
                 api("com.mikepenz:aboutlibraries-compose:10.10.0")
                 api("dev.icerock.moko:resources:0.23.0")
