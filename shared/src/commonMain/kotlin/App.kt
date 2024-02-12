@@ -1,6 +1,12 @@
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
@@ -63,6 +69,11 @@ fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(prefer
         theme?.let {
             MyTheme(
                 colors = when (it) {
+                    ThemePreference.SYSTEM -> when (isSystemInDarkTheme()) {
+                        true -> MyColors.dark
+                        else -> MyColors.light
+                    }
+
                     ThemePreference.LIGHT -> MyColors.light
                     ThemePreference.DARK -> MyColors.dark
                 }

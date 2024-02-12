@@ -33,7 +33,7 @@ class PreferenceStorage(
     val theme = store.data.map { preferences ->
         ThemePreference.entries.firstOrNull {
             it.name == preferences[THEME_KEY]
-        } ?: ThemePreference.DARK
+        } ?: ThemePreference.SYSTEM
     }
 
     suspend fun updateTheme(value: ThemePreference) = store.edit { preferences ->
