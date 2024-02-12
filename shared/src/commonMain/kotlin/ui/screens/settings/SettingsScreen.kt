@@ -21,10 +21,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberNavigatorScreenModel
-import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
@@ -42,7 +40,6 @@ import ui.screens.settings.licenses.LicenseScreen
 import ui.theme.MyTheme
 
 object SettingsScreen : Screen {
-    @OptIn(ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
         val scrollState = rememberScrollState()

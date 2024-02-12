@@ -1,4 +1,4 @@
-package data.api.requests
+package data.repository
 
 import data.api.NetworkClient
 import data.api.state.NetworkDataState
@@ -6,10 +6,9 @@ import data.models.api.BreedResponse
 import data.models.api.FactsResponse
 import kotlinx.coroutines.flow.Flow
 
-class NetworkRequests(
+class DogRepository(
     private val client: NetworkClient
 ) {
-
     suspend fun getFacts(): Flow<NetworkDataState<FactsResponse>> = client.networkRequest(
         url = "https://dog-api.kinduff.com/api/facts"
     )

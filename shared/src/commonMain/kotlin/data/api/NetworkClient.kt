@@ -1,6 +1,5 @@
 package data.api
 
-import data.api.requests.NetworkRequests
 import data.api.state.NetworkDataState
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -19,8 +18,6 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
 class NetworkClient {
-    val requests = NetworkRequests(this)
-
     @OptIn(ExperimentalSerializationApi::class)
     val client = HttpClient(provideEngine()) {
         install(ContentNegotiation) {

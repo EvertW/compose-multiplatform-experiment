@@ -8,10 +8,11 @@ import data.api.NetworkClient
 import data.api.state.NetworkDataState
 import data.api.state.networkDataStateOf
 import data.models.api.FactsResponse
+import data.repository.DogRepository
 import kotlinx.coroutines.launch
 
 class HomeScreenModel(
-    private val api: NetworkClient,
+    private val dogRepository: DogRepository,
 ) : ScreenModel {
 
     val dogImages = listOf(
@@ -30,7 +31,7 @@ class HomeScreenModel(
 
     fun request() {
         screenModelScope.launch {
-            api.requests.getFacts().collect {
+            dogRepository.getFacts().collect {
                 fact = it
             }
         }

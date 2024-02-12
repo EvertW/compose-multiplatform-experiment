@@ -4,14 +4,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import data.api.NetworkClient
 import data.api.state.NetworkDataState
 import data.api.state.networkDataStateOf
 import data.models.api.BreedResponse
+import data.repository.DogRepository
 import kotlinx.coroutines.launch
+import org.kodein.di.DIAware
 
 class BreedScreenModel(
-    private val api: NetworkClient,
+    private val dogRepository: DogRepository
 ) : ScreenModel {
 
 
@@ -23,7 +24,7 @@ class BreedScreenModel(
 
     private fun request() {
         screenModelScope.launch {
-            api.requests.getBreeds().collect {
+            dogRepository.getBreeds().collect {
                 breeds = it
             }
         }

@@ -34,7 +34,6 @@ import ui.screens.breeds.component.BreedRow
 import ui.theme.MyTheme
 
 object BreedScreen : Screen {
-    @OptIn(ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow

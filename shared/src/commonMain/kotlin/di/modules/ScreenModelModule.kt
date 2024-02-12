@@ -10,9 +10,9 @@ import ui.screens.settings.SettingsScreenModel
 import ui.screens.settings.issue.ReportIssueScreenModel
 
 val ScreenModelModule = DI.Module(name = "ScreenModelModule") {
-    bindProvider { HomeScreenModel(api = instance()) }
-    bindProvider { BreedScreenModel(api = instance()) }
-    bindProvider { SettingsScreenModel(preferences = instance()) }
+    bindProvider { HomeScreenModel(instance()) }
+    bindProvider { BreedScreenModel(instance()) }
+    bindProvider { SettingsScreenModel(instance()) }
     bindProvider { ReportIssueScreenModel() }
     bindProvider { LicenseScreenModel() }
 }
