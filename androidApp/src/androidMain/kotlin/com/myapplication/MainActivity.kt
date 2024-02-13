@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         ApplicationContextProvider.init(applicationContext)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            MainView(this)
+            MainView()
         }
     }
 }

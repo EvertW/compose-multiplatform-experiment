@@ -92,5 +92,4 @@ fun App() = withDI(createDependencyInjector()) {
     }
 }
 
-expect fun getPlatformName(): String
 fun getAppVersion() = "1.0"
