@@ -118,31 +118,7 @@ object HomeScreen : Screen {
                     ) {}
                 }
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            AnimatedContent(
-                targetState = screenModel.fact,
-            ) { state ->
-                when (state) {
-                    is NetworkDataState.Error -> MyErrorStateComponent(
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(horizontal = MyTheme.dimensions.contentPadding),
-                    )
-
-                    is NetworkDataState.Success -> MyBanner(
-                        modifier = Modifier.fillMaxWidth(),
-                        actionIcon = TablerIcons.Refresh,
-                        description = state.data.facts.firstOrNull().orEmpty(),
-                    ) {
-                        screenModel.request()
-                    }
-
-                    else -> MyLoadingIndicator(
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(horizontal = MyTheme.dimensions.contentPadding)
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             LazyRow(
                 modifier = Modifier.fillMaxWidth().height(156.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -158,6 +134,29 @@ object HomeScreen : Screen {
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         animationSpec = tween(),
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(24.dp))
+            AnimatedContent(
+                modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
+                targetState = screenModel.fact,
+            ) { state ->
+                when (state) {
+                    is NetworkDataState.Error -> MyErrorStateComponent(
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+
+                    is NetworkDataState.Success -> MyBanner(
+                        modifier = Modifier.fillMaxWidth(),
+                        actionIcon = TablerIcons.Refresh,
+                        description = state.data.facts.firstOrNull().orEmpty(),
+                    ) {
+                        screenModel.request()
+                    }
+
+                    else -> MyLoadingIndicator(
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
