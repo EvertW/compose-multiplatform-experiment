@@ -78,16 +78,14 @@ class ReportIssueScreen : Screen {
                     screenModel.description = value
                 }
                 Spacer(modifier = Modifier.height(24.dp))
-                IssueSubmitter { submit ->
-                    MyButton(
-                        text = MR.strings.generic_button_submit.desc().localized(),
-                    ) {
-                        submit(
-                            screenModel.subject.text,
-                            screenModel.description.text
-                        )
-                        navigator.pop()
-                    }
+                MyButton(
+                    text = MR.strings.generic_button_submit.desc().localized(),
+                ) {
+                    handleSubmit(
+                        subject = screenModel.subject.text,
+                        description = screenModel.description.text
+                    )
+                    navigator.pop()
                 }
 
                 Spacer(modifier = Modifier.height(MyTheme.dimensions.contentPadding))
@@ -95,3 +93,5 @@ class ReportIssueScreen : Screen {
         }
     }
 }
+
+expect fun handleSubmit(subject: String, description: String)

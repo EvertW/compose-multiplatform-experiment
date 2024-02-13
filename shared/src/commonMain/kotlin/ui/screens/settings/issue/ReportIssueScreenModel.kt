@@ -1,6 +1,5 @@
 package ui.screens.settings.issue
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,3 +11,4 @@ class ReportIssueScreenModel : ScreenModel {
     var subject by mutableStateOf(TextFieldValue())
     var description by mutableStateOf(TextFieldValue())
 }
+
