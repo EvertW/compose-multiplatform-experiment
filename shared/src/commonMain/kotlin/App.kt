@@ -20,13 +20,15 @@ import io.kamel.core.config.httpFetcher
 import io.kamel.core.config.takeFrom
 import io.kamel.image.config.Default
 import io.kamel.image.config.LocalKamelConfig
+import org.kodein.di.compose.rememberInstance
 import org.kodein.di.compose.withDI
 import ui.screens.MainScreen
 import ui.theme.MyColors
 import ui.theme.MyTheme
 
 @Composable
-fun App(preferences: PreferenceStorage) = withDI(createDependencyInjector(preferences)) {
+fun App() = withDI(createDependencyInjector()) {
+    val preferences by rememberInstance<PreferenceStorage>()
     val windowInsetsController = rememberWindowInsetsController()
     val theme by preferences.theme.collectAsState(null)
     val kamelConfig = remember {

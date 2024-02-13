@@ -1,16 +1,13 @@
 package di
 
-import data.storage.PreferenceStorage
 import di.modules.NetworkModule
 import di.modules.RepositoryModule
 import di.modules.ScreenModelModule
-import di.modules.createStorageModule
+import di.modules.StorageModule
 import org.kodein.di.DI
 
-fun createDependencyInjector(
-    preferences: PreferenceStorage
-) = DI.lazy {
-    import(createStorageModule(preferences))
+fun createDependencyInjector() = DI.lazy {
+    import(StorageModule)
     import(NetworkModule)
     import(RepositoryModule)
     import(ScreenModelModule)

@@ -1,5 +1,7 @@
-package data.storage
+package di.modules
 
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import data.storage.PreferenceStorage
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -7,8 +9,8 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
 @OptIn(ExperimentalForeignApi::class)
-fun dataStore() = PreferenceStorage.create(
-    path = { fileName ->
+actual fun providePreferenceStorage() = PreferenceStorage.create(
+    path = { name ->
         val documentDirectory: NSURL? = NSFileManager.defaultManager.URLForDirectory(
             directory = NSDocumentDirectory,
             inDomain = NSUserDomainMask,
@@ -16,6 +18,6 @@ fun dataStore() = PreferenceStorage.create(
             create = false,
             error = null,
         )
-        requireNotNull(documentDirectory).path + "/$fileName"
-    }
+        requireNotNull(documentDirectory).path + "/$name"
+    },
 )
