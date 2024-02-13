@@ -48,12 +48,11 @@ fun MyBanner(
         )
         Icon(
             modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .background(MyTheme.colors.surface)
-                .size(24.dp)
-                .padding(4.dp),
+                .padding(6.dp)
+                .align(Alignment.TopEnd)
+                .size(16.dp),
             imageVector = actionIcon,
-            tint = MyTheme.colors.text,
+            tint = MyTheme.colors.textInverse,
             contentDescription = null,
         )
     }

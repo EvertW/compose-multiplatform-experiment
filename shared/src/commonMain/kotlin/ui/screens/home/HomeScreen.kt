@@ -141,6 +141,7 @@ object HomeScreen : Screen {
             AnimatedContent(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
                 targetState = screenModel.fact,
+                contentAlignment = Alignment.Center
             ) { state ->
                 when (state) {
                     is NetworkDataState.Error -> MyErrorStateComponent(
