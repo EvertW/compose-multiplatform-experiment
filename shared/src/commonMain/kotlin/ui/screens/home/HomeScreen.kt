@@ -2,6 +2,7 @@ package ui.screens.home
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,6 +29,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -37,12 +39,14 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowRight
 import compose.icons.tablericons.ArrowUpRight
 import compose.icons.tablericons.Refresh
 import data.api.state.NetworkDataState
+import dev.icerock.moko.resources.compose.painterResource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import ui.library.banner.MyBanner
@@ -70,11 +74,15 @@ object HomeScreen : Screen {
         ) {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {
                 Box(
-                    modifier = Modifier.size(48.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(MyTheme.colors.primary),
+                    modifier = Modifier.size(48.dp),
                     contentAlignment = Alignment.Center
                 ) {
+                    Image(
+                        modifier = Modifier.fillMaxSize(),
+                        contentDescription = null,
+                        painter = painterResource(MR.images.bg_logo),
+                        colorFilter = ColorFilter.tint(MyTheme.colors.primary)
+                    )
                     MyText(
                         text = "mpe",
                         style = TextStyle(
