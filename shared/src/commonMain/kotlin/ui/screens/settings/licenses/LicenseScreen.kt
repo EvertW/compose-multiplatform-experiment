@@ -22,7 +22,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.evertwoud.multiplatform.example.MR
 import com.moriatsushi.insetsx.safeArea
-import data.api.state.NetworkDataState
+import data.network.state.NetworkDataState
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.readTextAsState
 import dev.icerock.moko.resources.desc.desc

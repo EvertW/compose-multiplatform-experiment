@@ -1,4 +1,4 @@
-package data.api.state
+package data.network.state
 
 import androidx.compose.runtime.Immutable
 

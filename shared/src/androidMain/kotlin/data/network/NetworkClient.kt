@@ -1,4 +1,4 @@
-package data.api
+package data.network
 
 import io.ktor.client.engine.cio.CIO
 

@@ -4,7 +4,7 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.mikepenz.aboutlibraries.Libs
-import data.api.state.NetworkDataState
+import data.network.state.NetworkDataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch

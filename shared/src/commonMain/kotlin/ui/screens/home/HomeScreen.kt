@@ -45,7 +45,7 @@ import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowRight
 import compose.icons.tablericons.ArrowUpRight
 import compose.icons.tablericons.Refresh
-import data.api.state.NetworkDataState
+import data.network.state.NetworkDataState
 import dev.icerock.moko.resources.compose.painterResource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource

@@ -1,7 +1,7 @@
 package data.repository
 
-import data.api.NetworkClient
-import data.api.state.NetworkDataState
+import data.network.NetworkClient
+import data.network.state.NetworkDataState
 import data.models.api.BreedResponse
 import data.models.api.FactsResponse
 import kotlinx.coroutines.flow.Flow

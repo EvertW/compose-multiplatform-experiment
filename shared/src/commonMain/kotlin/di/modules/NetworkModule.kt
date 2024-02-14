@@ -1,6 +1,6 @@
 package di.modules
 
-import data.api.NetworkClient
+import data.network.NetworkClient
 import org.kodein.di.DI
 import org.kodein.di.bindSingleton
 

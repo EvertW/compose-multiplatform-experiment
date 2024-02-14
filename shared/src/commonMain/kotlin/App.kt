@@ -10,7 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
-import data.api.provideEngine
+import data.network.provideEngine
 import data.models.preferences.ThemePreference
 import data.storage.PreferenceStorage
 import dev.icerock.moko.resources.desc.StringDesc
