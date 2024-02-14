@@ -80,6 +80,7 @@ class ReportIssueScreen : Screen {
                 Spacer(modifier = Modifier.height(24.dp))
                 MyButton(
                     text = MR.strings.generic_button_submit.desc().localized(),
+                    enabled = screenModel.canSubmit
                 ) {
                     handleSubmit(
                         subject = screenModel.subject.text,

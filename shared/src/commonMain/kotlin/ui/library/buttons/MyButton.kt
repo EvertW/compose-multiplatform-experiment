@@ -16,8 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import ui.library.text.MyText
@@ -28,6 +28,7 @@ import ui.theme.MyTheme
 fun MyButton(
     modifier: Modifier = Modifier,
     text: String,
+    enabled: Boolean = true,
     icon: ImageVector? = null,
     style: MyButtonStyle = MyButtonStyle.Primary,
     onClick: () -> Unit
@@ -38,6 +39,9 @@ fun MyButton(
     Row(
         modifier = modifier
             .animateContentSize()
+            .conditional(!enabled) {
+                alpha(0.5F)
+            }
             .clip(shape)
             .background(
                 when (style) {
@@ -45,6 +49,7 @@ fun MyButton(
                     MyButtonStyle.Secondary -> MyTheme.colors.background
                 }
             )
+
             .conditional(condition = style == MyButtonStyle.Secondary) {
                 border(
                     width = 2.dp,
@@ -52,16 +57,18 @@ fun MyButton(
                     shape = shape
                 )
             }
-            .clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(
-                    color = when (style) {
-                        MyButtonStyle.Primary -> MyTheme.colors.textInverse
-                        MyButtonStyle.Secondary -> MyTheme.colors.text
-                    },
-                )
-            ) {
-                onClick.invoke()
+            .conditional(enabled) {
+                clickable(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(
+                        color = when (style) {
+                            MyButtonStyle.Primary -> MyTheme.colors.textInverse
+                            MyButtonStyle.Secondary -> MyTheme.colors.text
+                        },
+                    )
+                ) {
+                    onClick.invoke()
+                }
             }
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
