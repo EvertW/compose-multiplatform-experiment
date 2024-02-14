@@ -1,13 +1,12 @@
 package data.network
 
+import data.network.logger.NetworkClientLogger
 import data.network.state.NetworkDataState
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.logging.DEFAULT
 import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
@@ -18,6 +17,10 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
 class NetworkClient {
+    companion object {
+        private const val LOG_TAG = "NetworkClient"
+    }
+
     @OptIn(ExperimentalSerializationApi::class)
     val client = HttpClient(provideEngine()) {
         install(ContentNegotiation) {
@@ -33,7 +36,7 @@ class NetworkClient {
 
         }
         install(Logging) {
-            logger = Logger.DEFAULT
+            logger = NetworkClientLogger
             level = LogLevel.ALL
         }
     }
