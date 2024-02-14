@@ -10,8 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.moriatsushi.insetsx.SystemBarsBehavior
 import com.moriatsushi.insetsx.rememberWindowInsetsController
-import data.network.provideEngine
 import data.models.preferences.ThemePreference
+import data.network.provideEngine
 import data.storage.PreferenceStorage
 import dev.icerock.moko.resources.desc.StringDesc
 import di.createDependencyInjector
@@ -31,6 +31,7 @@ fun App() = withDI(createDependencyInjector()) {
     val preferences by rememberInstance<PreferenceStorage>()
     val windowInsetsController = rememberWindowInsetsController()
     val theme by preferences.theme.collectAsState(null)
+    val isInDarkTheme = isSystemInDarkTheme()
     val kamelConfig = remember {
         KamelConfig {
             takeFrom(KamelConfig.Default)
@@ -47,21 +48,16 @@ fun App() = withDI(createDependencyInjector()) {
         }
     }
     // Update theme
-    LaunchedEffect(theme) {
+    LaunchedEffect(theme, isInDarkTheme) {
+        val useDarkIcons = when (theme) {
+            ThemePreference.LIGHT -> true
+            ThemePreference.DARK -> false
+            else -> !isInDarkTheme
+        }
         // The status bars icon + content will change to a light color
-        windowInsetsController?.setStatusBarContentColor(
-            dark = when (theme) {
-                ThemePreference.LIGHT -> true
-                else -> false
-            }
-        )
+        windowInsetsController?.setStatusBarContentColor(dark = useDarkIcons)
         // The navigation bars icons will change to a light color (android only)
-        windowInsetsController?.setNavigationBarsContentColor(
-            dark = when (theme) {
-                ThemePreference.LIGHT -> true
-                else -> false
-            }
-        )
+        windowInsetsController?.setNavigationBarsContentColor(dark = useDarkIcons)
         // Make system bars immersive
         windowInsetsController?.setSystemBarsBehavior(SystemBarsBehavior.Immersive)
     }
