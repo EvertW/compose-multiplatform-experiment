@@ -28,11 +28,11 @@ kotlin {
 
     sourceSets {
         val voyagerVersion = "1.1.0-alpha02"
-        val ktorVersion = "2.3.7"
+        val ktorVersion = "2.3.8"
 
         val commonMain by getting {
             dependencies {
-                api("media.kamel:kamel-image:0.8.3")
+                api("media.kamel:kamel-image:0.9.1")
                 api("androidx.datastore:datastore-preferences-core:1.1.0-beta01")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
