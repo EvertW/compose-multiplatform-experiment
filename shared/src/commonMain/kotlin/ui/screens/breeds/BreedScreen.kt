@@ -57,8 +57,8 @@ object BreedScreen : Screen {
         LazyVerticalGrid(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.statusBars),
             contentPadding = PaddingValues(MyTheme.dimensions.contentPadding),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
             columns = GridCells.Fixed(2)
         ) {
             item("header", span = { GridItemSpan(2) }) {
