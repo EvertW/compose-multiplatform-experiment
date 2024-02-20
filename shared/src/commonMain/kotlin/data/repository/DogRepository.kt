@@ -1,9 +1,9 @@
 package data.repository
 
-import data.network.NetworkClient
-import data.network.state.NetworkDataState
 import data.models.api.BreedResponse
 import data.models.api.FactsResponse
+import data.network.NetworkClient
+import data.network.state.NetworkDataState
 import kotlinx.coroutines.flow.Flow
 
 class DogRepository(
