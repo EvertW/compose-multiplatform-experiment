@@ -64,7 +64,6 @@ fun BreedDetailDialog(
                 label = "Bred for",
                 value = breed.bred_for
             )
-            Spacer(modifier = Modifier.height(12.dp))
         }
     }
 }
