@@ -36,7 +36,7 @@ fun BreedDetailDialog(
                     .clip(RoundedCornerShape(12.dp)).background(MyTheme.colors.surface),
                 resource = asyncPainterResource(
                     key = breed.reference_image_id,
-                    data = "https://cdn2.thedogapi.com/images/${breed.reference_image_id}.jpg"
+                    data = breed.image
                 ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
