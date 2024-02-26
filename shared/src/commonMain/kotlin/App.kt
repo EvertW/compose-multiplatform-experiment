@@ -87,5 +87,3 @@ fun App() = withDI(createDependencyInjector()) {
         }
     }
 }
-
-fun getAppVersion() = "1.0"

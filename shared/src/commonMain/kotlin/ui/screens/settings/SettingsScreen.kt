@@ -1,5 +1,6 @@
 package ui.screens.settings
 
+import AppConfig
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -32,7 +33,6 @@ import data.models.preferences.ThemePreference
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.resources.format
-import getAppVersion
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
 import ui.screens.settings.issue.ReportIssueScreen
@@ -184,7 +184,7 @@ object SettingsScreen : Screen {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = MR.strings.settings_version.format(getAppVersion()).localized(),
+                text = MR.strings.settings_version.format(AppConfig.APP_VERSION).localized(),
                 style = MyTheme.typography.label.copy(textAlign = TextAlign.Center),
             )
         }
