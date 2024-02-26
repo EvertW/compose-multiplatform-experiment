@@ -69,7 +69,9 @@ object HomeScreen : Screen {
         }
 
         Column(
-            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.statusBars)
+            modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.statusBars)
                 .verticalScroll(scrollState),
         ) {
             Column(modifier = Modifier.padding(MyTheme.dimensions.contentPadding)) {

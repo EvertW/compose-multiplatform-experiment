@@ -1,6 +1,5 @@
 package ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,11 +16,9 @@ import cafe.adriel.voyager.navigator.Navigator
 import com.moriatsushi.insetsx.ime
 import com.moriatsushi.insetsx.navigationBars
 import compose.icons.TablerIcons
-import compose.icons.tablericons.BuildingWarehouse
 import compose.icons.tablericons.Home2
 import compose.icons.tablericons.List
 import compose.icons.tablericons.Settings
-import compose.icons.tablericons.ShoppingCart
 import ui.library.menu.MyBottomMenu
 import ui.library.menu.MyBottomMenuItem
 import ui.screens.breeds.BreedScreen
@@ -49,8 +46,9 @@ fun MainScreen() {
                 when (navigator.lastItem) {
                     is HomeScreen,
                     is SettingsScreen,
-                    is BreedScreen-> MyBottomMenu(
-                        modifier = Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars)
+                    is BreedScreen -> MyBottomMenu(
+                        modifier = Modifier.fillMaxWidth()
+                            .windowInsetsPadding(WindowInsets.navigationBars)
                     ) {
                         MyBottomMenuItem(
                             icon = TablerIcons.Home2,

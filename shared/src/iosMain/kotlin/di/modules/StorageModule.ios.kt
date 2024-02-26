@@ -1,6 +1,5 @@
 package di.modules
 
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import data.storage.PreferenceStorage
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory

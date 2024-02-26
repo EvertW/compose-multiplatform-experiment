@@ -3,14 +3,11 @@
 package ui.theme
 
 import androidx.compose.foundation.LocalIndication
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.Modifier
 import kotlin.experimental.ExperimentalObjCRefinement
 
 internal val LocalMyThemeColors = staticCompositionLocalOf { MyColors.light }
