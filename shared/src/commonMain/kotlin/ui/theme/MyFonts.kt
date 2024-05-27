@@ -4,30 +4,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import com.evertwoud.multiplatform.example.MR
-import dev.icerock.moko.resources.compose.asFont
+import com.evertwoud.multiplatform.resources.*
+import org.jetbrains.compose.resources.Font
 
 internal object MyFonts {
     val Poppins
         @Composable
         get() = FontFamily(
             listOfNotNull(
-                MR.fonts.poppins.bold.asFont(
-                    weight = FontWeight.Bold,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.poppins.medium.asFont(
-                    weight = FontWeight.Medium,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.poppins.semibold.asFont(
-                    weight = FontWeight.SemiBold,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.poppins.regular.asFont(
-                    weight = FontWeight.Normal,
-                    style = FontStyle.Normal
-                ),
+                Font(Res.font.poppins_bold, FontWeight.Bold, FontStyle.Normal),
+                Font(Res.font.poppins_medium, FontWeight.Medium, FontStyle.Normal),
+                Font(Res.font.poppins_semibold, FontWeight.SemiBold, FontStyle.Normal),
+                Font(Res.font.poppins_regular, FontWeight.Normal, FontStyle.Normal),
             )
         )
 
@@ -35,18 +23,9 @@ internal object MyFonts {
         @Composable
         get() = FontFamily(
             listOfNotNull(
-                MR.fonts.dmsans.bold.asFont(
-                    weight = FontWeight.Bold,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.dmsans.medium.asFont(
-                    weight = FontWeight.Medium,
-                    style = FontStyle.Normal
-                ),
-                MR.fonts.dmsans.regular.asFont(
-                    weight = FontWeight.Normal,
-                    style = FontStyle.Normal
-                ),
+                Font(Res.font.dmsans_bold, FontWeight.Bold, FontStyle.Normal),
+                Font(Res.font.dmsans_medium, FontWeight.Medium, FontStyle.Normal),
+                Font(Res.font.dmsans_regular, FontWeight.Normal, FontStyle.Normal),
             )
         )
 }

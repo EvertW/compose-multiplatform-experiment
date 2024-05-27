@@ -17,10 +17,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.*
 import com.moriatsushi.insetsx.safeArea
-import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.desc
+import org.jetbrains.compose.resources.stringResource
 import ui.library.buttons.MyButton
 import ui.library.input.MyInput
 import ui.library.text.MyText
@@ -51,7 +50,9 @@ class ReportIssueScreen : Screen {
             ) {
                 MyText(
                     modifier = Modifier.fillMaxWidth(),
-                    text = MR.strings.settings_report_issue.desc().localized(),
+                    text = stringResource(
+                        Res.string.settings_report_issue
+                    ),
                     style = MyTheme.typography.title
                 )
                 Spacer(modifier = Modifier.height(4.dp))
@@ -62,7 +63,7 @@ class ReportIssueScreen : Screen {
                 Spacer(modifier = Modifier.height(24.dp))
                 MyInput(
                     modifier = Modifier.fillMaxWidth(),
-                    label = MR.strings.settings_report_issue_subject_hint.desc().localized(),
+                    label = stringResource(Res.string.settings_report_issue_subject_hint),
                     value = screenModel.subject,
                 ) { value ->
                     screenModel.subject = value
@@ -70,7 +71,7 @@ class ReportIssueScreen : Screen {
                 Spacer(modifier = Modifier.height(12.dp))
                 MyInput(
                     modifier = Modifier.fillMaxWidth(),
-                    label = MR.strings.settings_report_issue_description_hint.desc().localized(),
+                    label = stringResource(Res.string.settings_report_issue_description_hint),
                     value = screenModel.description,
                     minLines = 5,
                     maxLines = Int.MAX_VALUE
@@ -79,7 +80,7 @@ class ReportIssueScreen : Screen {
                 }
                 Spacer(modifier = Modifier.height(24.dp))
                 MyButton(
-                    text = MR.strings.generic_button_submit.desc().localized(),
+                    text = stringResource(Res.string.generic_button_submit),
                     enabled = screenModel.canSubmit
                 ) {
                     handleSubmit(

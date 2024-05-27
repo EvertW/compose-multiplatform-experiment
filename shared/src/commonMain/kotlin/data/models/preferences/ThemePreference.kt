@@ -1,7 +1,11 @@
 package data.models.preferences
 
 import androidx.compose.runtime.Composable
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.Res
+import com.evertwoud.multiplatform.resources.settings_theme_dark
+import com.evertwoud.multiplatform.resources.settings_theme_light
+import com.evertwoud.multiplatform.resources.settings_theme_system
+import org.jetbrains.compose.resources.stringResource
 
 enum class ThemePreference() {
     SYSTEM,
@@ -10,9 +14,11 @@ enum class ThemePreference() {
 
     val label
         @Composable
-        get() = when (this) {
-            SYSTEM -> MR.strings.settings_theme_system
-            DARK -> MR.strings.settings_theme_dark
-            LIGHT -> MR.strings.settings_theme_light
-        }
+        get() = stringResource(
+            when (this) {
+                SYSTEM -> Res.string.settings_theme_system
+                DARK -> Res.string.settings_theme_dark
+                LIGHT -> Res.string.settings_theme_light
+            }
+        )
 }

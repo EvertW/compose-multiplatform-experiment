@@ -1,24 +1,24 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="generateLicences" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
-      <option name="executionName" />
-      <option name="externalProjectPath" value="$PROJECT_DIR$" />
-      <option name="externalSystemIdString" value="GRADLE" />
-      <option name="scriptParameters" value="-PaboutLibraries.exportPath=src/commonMain/resources/MR/assets -PaboutLibraries.exportVariant=release" />
+      <option name="executionName"/>
+      <option name="externalProjectPath" value="$PROJECT_DIR$"/>
+      <option name="externalSystemIdString" value="GRADLE"/>
+      <option name="scriptParameters" value="-PaboutLibraries.exportPath=src/commonMain/composeResources/files  -PaboutLibraries.exportVariant=release"/>
       <option name="taskDescriptions">
-        <list />
+        <list/>
       </option>
       <option name="taskNames">
         <list>
-          <option value="shared:exportLibraryDefinitions" />
+          <option value="shared:exportLibraryDefinitions"/>
         </list>
       </option>
-      <option name="vmOptions" />
+      <option name="vmOptions"/>
     </ExternalSystemSettings>
     <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
     <DebugAllEnabled>false</DebugAllEnabled>
     <ForceTestExec>false</ForceTestExec>
-    <method v="2" />
+    <method v="2"/>
   </configuration>
 </component>

@@ -39,16 +39,17 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.Res
+import com.evertwoud.multiplatform.resources.bg_logo
 import com.moriatsushi.insetsx.statusBars
 import compose.icons.TablerIcons
 import compose.icons.tablericons.ArrowRight
 import compose.icons.tablericons.ArrowUpRight
 import compose.icons.tablericons.Refresh
 import data.network.state.NetworkDataState
-import dev.icerock.moko.resources.compose.painterResource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
+import org.jetbrains.compose.resources.painterResource
 import ui.library.banner.MyBanner
 import ui.library.buttons.MyButton
 import ui.library.buttons.MyButtonStyle
@@ -82,7 +83,7 @@ object HomeScreen : Screen {
                     Image(
                         modifier = Modifier.fillMaxSize(),
                         contentDescription = null,
-                        painter = painterResource(MR.images.bg_logo),
+                        painter = painterResource(Res.drawable.bg_logo),
                         colorFilter = ColorFilter.tint(MyTheme.colors.primary)
                     )
                     MyText(

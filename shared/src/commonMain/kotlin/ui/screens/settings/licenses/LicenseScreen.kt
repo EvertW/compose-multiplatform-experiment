@@ -11,21 +11,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.Res
+import com.evertwoud.multiplatform.resources.settings_licenses
 import com.moriatsushi.insetsx.safeArea
 import data.network.state.NetworkDataState
-import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.compose.readTextAsState
-import dev.icerock.moko.resources.desc.desc
+
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.stringResource
 import ui.library.error.MyErrorStateComponent
 import ui.library.loading.MyLoadingIndicator
 import ui.library.text.MyText
@@ -35,14 +34,21 @@ import ui.screens.settings.licenses.detail.LicenseDetailScreen
 import ui.theme.MyTheme
 
 class LicenseScreen : Screen {
+    @OptIn(ExperimentalResourceApi::class)
     @Composable
     override fun Content() {
         val screenModel = rememberScreenModel<LicenseScreenModel>()
         val navigator = LocalNavigator.currentOrThrow
-        val licenseJson by MR.assets.aboutlibraries.readTextAsState()
+
+        var licenseJson: String? by remember {
+            mutableStateOf(null)
+        }
 
         LaunchedEffect(licenseJson) {
-            licenseJson?.let { json -> screenModel.load(json) }
+            licenseJson = Res.readBytes("files/aboutlibraries.json").decodeToString()
+            licenseJson?.let { json ->
+                screenModel.load(json)
+            }
         }
 
         Column(
@@ -56,7 +62,7 @@ class LicenseScreen : Screen {
                     MyText(
                         modifier = Modifier.fillMaxWidth()
                             .padding(horizontal = MyTheme.dimensions.contentPadding),
-                        text = MR.strings.settings_licenses.desc().localized(),
+                        text = stringResource(Res.string.settings_licenses),
                         style = MyTheme.typography.title
                     )
                     Spacer(modifier = Modifier.height(8.dp))

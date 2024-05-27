@@ -4,8 +4,8 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
     id("com.mikepenz.aboutlibraries.plugin")
-    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -19,11 +19,6 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
-        framework {
-            baseName = "shared"
-            isStatic = true
-            export("dev.icerock.moko:resources:0.23.0")
-        }
     }
 
     sourceSets {
@@ -33,7 +28,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api("media.kamel:kamel-image:0.9.1")
-                api("androidx.datastore:datastore-preferences-core:1.1.0-beta01")
+                api("androidx.datastore:datastore-preferences-core:1.1.1")
                 api("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
                 api("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
@@ -50,8 +45,6 @@ kotlin {
                 api("org.kodein.di:kodein-di-framework-compose:7.21.2")
                 api("com.mikepenz:aboutlibraries-core:10.10.0")
                 api("com.mikepenz:aboutlibraries-compose:10.10.0")
-                api("dev.icerock.moko:resources:0.23.0")
-                api("dev.icerock.moko:resources-compose:0.23.0")
                 api("co.touchlab:kermit:2.0.3")
                 api(compose.runtime)
                 api(compose.foundation)
@@ -90,17 +83,12 @@ kotlin {
     }
 }
 
-multiplatformResources {
-    multiplatformResourcesPackage = "com.evertwoud.multiplatform.example"
-    disableStaticFrameworkWarning = true
-}
-
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     namespace = "com.myapplication.common"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res", "src/commonMain/resources")
+    sourceSets["main"].res.srcDirs("src/androidMain/res", "src/commonMain/composeResources")
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
@@ -112,5 +100,11 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "com.evertwoud.multiplatform.resources"
+    generateResClass = always
 }
 

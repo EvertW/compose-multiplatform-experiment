@@ -24,12 +24,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.Res
+import com.evertwoud.multiplatform.resources.breeds_title
 import com.moriatsushi.insetsx.statusBars
 import data.models.api.BreedResponse
 import data.network.state.NetworkDataState
-import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.desc
+import org.jetbrains.compose.resources.stringResource
 import ui.library.error.MyErrorStateComponent
 import ui.library.loading.MyLoadingIndicator
 import ui.library.text.MyText
@@ -64,7 +64,7 @@ object BreedScreen : Screen {
             item("header", span = { GridItemSpan(2) }) {
                 MyText(
                     modifier = Modifier.fillMaxWidth(),
-                    text = MR.strings.breeds_title.desc().localized(),
+                    text = stringResource(Res.string.breeds_title),
                     style = MyTheme.typography.title
                 )
                 Spacer(modifier = Modifier.height(MyTheme.dimensions.contentPadding))

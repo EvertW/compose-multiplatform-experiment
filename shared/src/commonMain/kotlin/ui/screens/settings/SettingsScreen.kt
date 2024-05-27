@@ -26,13 +26,11 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.kodein.rememberNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.*
 import com.moriatsushi.insetsx.statusBars
 import data.models.preferences.LanguagePreference
 import data.models.preferences.ThemePreference
-import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.resources.format
+import org.jetbrains.compose.resources.stringResource
 import ui.library.text.MyText
 import ui.screens.settings.component.SettingsRow
 import ui.screens.settings.issue.ReportIssueScreen
@@ -65,7 +63,7 @@ object SettingsScreen : Screen {
                             .fillMaxWidth()
                             .padding(MyTheme.dimensions.contentPadding),
                         style = MyTheme.typography.subTitle,
-                        text = MR.strings.settings_theme_selection.desc().localized(),
+                        text = stringResource(Res.string.settings_theme_selection),
                     )
                     ThemePreference.entries.forEach { theme ->
                         MyText(
@@ -80,7 +78,7 @@ object SettingsScreen : Screen {
                                 true -> MyTheme.colors.primary
                                 false -> MyTheme.colors.text
                             },
-                            text = theme.label.desc().localized(),
+                            text = theme.label,
                         )
                     }
                 }
@@ -102,7 +100,7 @@ object SettingsScreen : Screen {
                             .fillMaxWidth()
                             .padding(MyTheme.dimensions.contentPadding),
                         style = MyTheme.typography.subTitle,
-                        text = MR.strings.settings_language_selection.desc().localized(),
+                        text = stringResource(Res.string.settings_language_selection),
                     )
                     LanguagePreference.entries.forEach { language ->
                         MyText(
@@ -117,7 +115,7 @@ object SettingsScreen : Screen {
                                 language -> MyTheme.colors.primary
                                 else -> MyTheme.colors.text
                             },
-                            text = language.label.desc().localized(),
+                            text = language.label,
                         )
                     }
                 }
@@ -133,7 +131,7 @@ object SettingsScreen : Screen {
         ) {
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = MR.strings.settings_title.desc().localized(),
+                text = stringResource(Res.string.settings_title),
                 style = MyTheme.typography.title
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -144,18 +142,18 @@ object SettingsScreen : Screen {
             Spacer(modifier = Modifier.height(24.dp))
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = MR.strings.settings_appearance.desc().localized(),
+                text = stringResource(Res.string.settings_appearance),
                 style = MyTheme.typography.subTitle
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsRow(
-                label = MR.strings.settings_language.desc().localized(),
+                label = stringResource(Res.string.settings_language),
                 onClick = {
                     screenModel.showLanguageDialog = true
                 },
             )
             SettingsRow(
-                label = MR.strings.settings_theme.desc().localized(),
+                label = stringResource(Res.string.settings_theme),
                 onClick = {
                     screenModel.showThemeDialog = true
                 },
@@ -163,18 +161,18 @@ object SettingsScreen : Screen {
             Spacer(modifier = Modifier.height(24.dp))
             MyText(
                 modifier = Modifier.padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = MR.strings.settings_other.desc().localized(),
+                text = stringResource(Res.string.settings_other),
                 style = MyTheme.typography.subTitle
             )
             Spacer(modifier = Modifier.height(8.dp))
             SettingsRow(
-                label = MR.strings.settings_licenses.desc().localized(),
+                label = stringResource(Res.string.settings_licenses),
                 onClick = {
                     navigator.push(LicenseScreen())
                 },
             )
             SettingsRow(
-                label = MR.strings.settings_report_issue.desc().localized(),
+                label = stringResource(Res.string.settings_report_issue),
                 onClick = {
                     navigator.push(ReportIssueScreen())
                 },
@@ -184,7 +182,7 @@ object SettingsScreen : Screen {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MyTheme.dimensions.contentPadding),
-                text = MR.strings.settings_version.format(AppConfig.APP_VERSION).localized(),
+                text = stringResource(Res.string.settings_version, AppConfig.APP_VERSION),
                 style = MyTheme.typography.label.copy(textAlign = TextAlign.Center),
             )
         }

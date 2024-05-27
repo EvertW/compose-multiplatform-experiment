@@ -13,7 +13,6 @@ import com.moriatsushi.insetsx.rememberWindowInsetsController
 import data.models.preferences.ThemePreference
 import data.network.provideEngine
 import data.storage.PreferenceStorage
-import dev.icerock.moko.resources.desc.StringDesc
 import di.createDependencyInjector
 import io.kamel.core.config.KamelConfig
 import io.kamel.core.config.httpFetcher
@@ -42,9 +41,10 @@ fun App() = withDI(createDependencyInjector()) {
     // Update locale
     LaunchedEffect(Unit) {
         preferences.language.collect { value ->
-            StringDesc.localeType = value?.locale?.let { locale ->
-                StringDesc.LocaleType.Custom(locale)
-            } ?: StringDesc.LocaleType.System
+            value?.locale
+//            StringDesc.localeType = value?.locale?.let { locale ->
+//                StringDesc.LocaleType.Custom(locale)
+//            } ?: StringDesc.LocaleType.System
         }
     }
     // Update theme

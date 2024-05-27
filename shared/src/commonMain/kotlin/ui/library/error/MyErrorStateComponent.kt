@@ -12,11 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.evertwoud.multiplatform.example.MR
+import com.evertwoud.multiplatform.resources.Res
+import com.evertwoud.multiplatform.resources.error_generic
 import compose.icons.TablerIcons
 import compose.icons.tablericons.AlertTriangle
-import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.desc
+import org.jetbrains.compose.resources.stringResource
 import ui.library.text.MyText
 import ui.theme.MyTheme
 
@@ -41,7 +41,7 @@ fun MyErrorStateComponent(
         )
         MyText(
             modifier = Modifier.weight(1F),
-            text = error ?: MR.strings.error_generic.desc().localized(),
+            text = error ?: stringResource(Res.string.error_generic),
             style = MyTheme.typography.body,
             color = MyTheme.colors.text,
         )
