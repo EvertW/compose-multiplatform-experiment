@@ -7,7 +7,7 @@ import com.evertwoud.multiplatform.resources.settings_theme_light
 import com.evertwoud.multiplatform.resources.settings_theme_system
 import org.jetbrains.compose.resources.stringResource
 
-enum class ThemePreference() {
+enum class ThemePreference {
     SYSTEM,
     DARK,
     LIGHT;
