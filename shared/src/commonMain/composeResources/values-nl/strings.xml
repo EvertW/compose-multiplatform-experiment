@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="generic_button_submit">Versturen</string>
+
+    <string name="error_generic">Er is iets mis gegaan. Probeer het later opnieuw.</string>
+
+    <string name="breeds_title">Hondenrassen</string>
+
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_appearance">Uiterlijk</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_language_selection">Kies een taal</string>
+    <string name="settings_language_en">Engels</string>
+    <string name="settings_language_nl">Nederlands</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_theme_selection">Kies een thema</string>
+    <string name="settings_theme_system">Systeem</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_other">Overig</string>
+    <string name="settings_licenses">Licensies</string>
+    <string name="settings_report_issue">Probleem rapporteren</string>
+    <string name="settings_report_issue_subject_hint">Onderwerp</string>
+    <string name="settings_report_issue_description_hint">Beschrijf je probleem</string>
+    <string name="settings_version">Versie: %s</string>
+</resources>
